@@ -1,7 +1,5 @@
 package todo.example
 {
-	import flash.events.MouseEvent;
-	
 	import mx.events.FlexEvent;
 	
 	import robotlegs.bender.bundles.mvcs.MVCSBundle;
