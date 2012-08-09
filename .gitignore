@@ -1,6 +1,7 @@
 .settings/
 bin-debug/
 html-template/
+deploy/
 
 .actionScriptProperties
 .flexProperties

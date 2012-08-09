@@ -1,0 +1,81 @@
+<project name="TodoExample" basedir="../" default="main">
+
+	<property environment="env."/>
+	<property file="build\build.properties" />
+
+	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" />
+        
+    <taskdef resource="flexUnitTasks.tasks">
+       <classpath>
+          <fileset dir="${tasks.dir}">
+             <include name="flexUnitTasks*.jar" />
+          </fileset>
+       </classpath>
+    </taskdef>
+
+    <!--
+    	Builds the application so it is ready for production.
+    -->
+    <target name="main" depends="-clean, -prepare, -test" />
+
+    <!--
+    	Tests the application.
+    -->
+    <target name="test" depends="-clean, -prepare, -test" />
+
+    <!-- 
+		Deletes any artifacts from any previous builds.
+    -->
+    <target name="-clean"> 
+		<delete dir="${deploy.dir}" />
+    </target>
+
+    <!--
+		Creates directories that are required by the build
+		process. If the test report directory doesn't exist
+		before running the tests then the test running will
+		fail.
+    -->
+    <target name="-prepare">
+    	<mkdir dir="${deploy.dir}" />
+    	<mkdir dir="${test.report.dir}" />
+    </target>
+
+    <!--
+    	Runs the test runner that executes the tests for the
+    	application. Reports are generated and can be found
+    	in the artifacts.
+    -->
+    <target name="-test">
+		<mxmlc  file="${test.src.dir}/${test.runner}"
+	            output="${test.dir}/${ant.project.name}Tests.swf"
+	            actionscript-file-encoding="UTF-8"
+	            keep-generated-actionscript="false"
+	            static-link-runtime-shared-libraries="true"
+	            debug="true">
+
+	    <load-config filename="${FLEX_HOME}/frameworks/flex-config.xml"/> 
+	        <compiler.source-path path-element="${src.dir}" />
+
+	        <compiler.library-path dir="${lib.dir}" append="true">
+	                <include name="*.swc" />
+	        </compiler.library-path>
+
+	        <compiler.verbose-stacktraces>true</compiler.verbose-stacktraces>
+	        <compiler.headless-server>true</compiler.headless-server>
+	    </mxmlc>
+
+	    <flexunit   swf="${test.dir}/${ant.project.name}Tests.swf"
+	                toDir="${test.report.dir}" 
+	                haltonfailure="true"
+	                localtrusted="true"
+	                verbose="true" />
+
+	    <junitreport todir="${test.report.dir}">
+	        <fileset dir="${test.report.dir}">
+	            <include name="TEST-*.xml" />
+	        </fileset>
+	        <report format="frames" todir="${test.report.dir}/html"/>
+	    </junitreport>
+    </target>
+</project>
