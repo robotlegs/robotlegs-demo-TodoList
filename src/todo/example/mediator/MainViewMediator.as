@@ -1,5 +1,7 @@
 package todo.example.mediator
 {
+	import flash.events.MouseEvent;
+	
 	import robotlegs.bender.bundles.mvcs.Mediator;
 	
 	import todo.example.model.api.IModel;
@@ -15,12 +17,6 @@ package todo.example.mediator
 		
 		override public function initialize():void
 		{
-			
-		}
-		
-		override public function destroy():void
-		{
-			
 		}
 	}
 }

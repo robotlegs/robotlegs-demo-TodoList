@@ -3,6 +3,7 @@ package todo.example.config
 	import org.swiftsuspenders.Injector;
 	
 	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
+	import robotlegs.bender.extensions.signalCommandMap.api.ISignalCommandMap;
 	import robotlegs.bender.framework.api.IConfig;
 	
 	import todo.example.mediator.MainViewMediator;
@@ -12,19 +13,20 @@ package todo.example.config
 
 	public class AppConfiguration implements IConfig
 	{
-		private var _injector: Injector;
-		private var _mediatorMap: IMediatorMap;
+		[Inject]
+		public var injector: Injector;
+
+		[Inject]
+		public var mediatorMap: IMediatorMap;
 		
-		public function AppConfiguration(injector: Injector, mediatorMap:IMediatorMap)
-		{
-			_injector = injector;
-			_mediatorMap = mediatorMap;
-		}
+		[Inject]
+		public var signalCommandMap: ISignalCommandMap;
 		
 		public function configure(): void
 		{
 			dependencies();
 			mediators();
+			signals();
 		}
 		
 		/**
@@ -34,7 +36,7 @@ package todo.example.config
 		 */
 		private function dependencies(): void
 		{
-			_injector.map(IModel).toSingleton(Model);
+			injector.map(IModel).toSingleton(Model);
 		}
 		
 		/**
@@ -42,7 +44,15 @@ package todo.example.config
 		 */
 		private function mediators(): void
 		{
-			_mediatorMap.map(IMainView).toMediator(MainViewMediator);
+			mediatorMap.map(IMainView).toMediator(MainViewMediator);
+		}
+		
+		/**
+		 * Maps signals to commands using the signalCommandMap.
+		 */
+		private function signals(): void
+		{
+			
 		}
 	}
 }

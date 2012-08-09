@@ -8,4 +8,7 @@
 	</s:layout>
 	
 	<s:Label text="Todo Application" />
+	
+	<s:Button id="addButtonUI"
+			  label="Add" />
 </s:Group>
