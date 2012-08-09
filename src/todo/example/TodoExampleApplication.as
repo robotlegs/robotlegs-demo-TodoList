@@ -6,6 +6,7 @@ package todo.example
 	
 	import robotlegs.bender.bundles.mvcs.MVCSBundle;
 	import robotlegs.bender.framework.api.IContext;
+	import robotlegs.bender.framework.api.LogLevel;
 	import robotlegs.bender.framework.impl.Context;
 	
 	import spark.components.Application;
@@ -39,6 +40,18 @@ package todo.example
 			context = new Context()
 				.extend(MVCSBundle)
 				.configure(AppConfiguration, this);
+			
+			setLogLevel();
+		}
+		
+		/**
+		 * Sets the logLevel for the robotegs context.
+		 */
+		private function setLogLevel(): void
+		{
+			// setting the logLevel to WARN means that robotlegs
+			// will also notify us about ERROR & FATAL.
+			context.logLevel = LogLevel.WARN;
 		}
 	}
 }
