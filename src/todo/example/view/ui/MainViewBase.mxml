@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
-		 xmlns:mx="library://ns.adobe.com/flex/mx">
+		 xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:view="todo.example.view.*">
 	
 	<s:layout>
-		<s:VerticalLayout paddingBottom="20" paddingLeft="20" paddingRight="20" paddingTop="20" />
+		<s:VerticalLayout 	gap="20"
+							paddingBottom="20" paddingLeft="20" paddingRight="20" paddingTop="20" />
 	</s:layout>
 	
-	<s:Label text="Todo Application" />
+	<s:Label 	fontSize="22" fontWeight="bold"
+				text="My Todo List" />
+	
+	<view:TodoListView id="todoListView" />
 	
 </s:Group>
