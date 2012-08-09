@@ -1,5 +1,7 @@
 package todo.example
 {
+	import flash.events.MouseEvent;
+	
 	import mx.events.FlexEvent;
 	
 	import robotlegs.bender.bundles.mvcs.MVCSBundle;
@@ -32,7 +34,7 @@ package todo.example
 		/**
 		 * Handles the application preinitialization.
 		 */
-		protected function preInitialize(e: FlexEvent): void
+		private function preInitialize(e: FlexEvent): void
 		{
 			context = new Context()
 				.extend(MVCSBundle)
