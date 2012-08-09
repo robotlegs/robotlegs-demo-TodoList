@@ -7,9 +7,6 @@ package todo.example.view
 	
 	public class MainView extends MainViewBase implements IMainView
 	{
-		public function get addButton(): Button
-		{
-			return addButtonUI;
-		}
+
 	}
 }
