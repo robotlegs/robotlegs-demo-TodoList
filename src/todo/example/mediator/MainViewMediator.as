@@ -17,5 +17,10 @@ package todo.example.mediator
 		{
 			
 		}
+		
+		override public function destroy():void
+		{
+			
+		}
 	}
 }
