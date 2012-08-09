@@ -2,6 +2,7 @@ package todo.example
 {
 	import todo.example.bundle.AppBundleTests;
 	import todo.example.config.AppConfigurationTests;
+	import todo.example.domain.TodoTests;
 	import todo.example.model.ModelTests;
 	import todo.example.view.MainViewTests;
 
@@ -15,5 +16,7 @@ package todo.example
 		public var mainViewTests: MainViewTests;
 		
 		public var modelTests: ModelTests;
+		
+		public var todoTests: TodoTests;
 	}
 }
