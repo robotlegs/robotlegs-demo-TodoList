@@ -34,7 +34,7 @@ package todo.example.mediator
 		public function createNewSignalDispatched_AddTodoFormViewAsPopup(): void
 		{
 			var todoListViewMediator: TodoListViewMediator = createMediator();
-			simulateCreateNew(todoListViewMediator.view);
+			simulateCreateNew();
 			
 			verify(times(1)).that(todoListViewMediator.popup.add(anyOf(TodoFormView)));
 		}
@@ -89,9 +89,9 @@ package todo.example.mediator
 		 * Simulates the user wanting to create a new
 		 * todo item.
 		 */
-		private function simulateCreateNew(todoListView: ITodoListView): void
+		private function simulateCreateNew(): void
 		{
-			(todoListView.createNewSignal as Signal).dispatch();
+			(_todoListView.createNewSignal as Signal).dispatch();
 		}
 	}
 }
