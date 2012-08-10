@@ -7,12 +7,14 @@ package todo.example.config
 	import robotlegs.bender.framework.api.IConfig;
 	
 	import todo.example.mediator.MainViewMediator;
+	import todo.example.mediator.TodoFormViewMediator;
 	import todo.example.mediator.TodoListViewMediator;
 	import todo.example.model.Model;
 	import todo.example.model.api.IModel;
 	import todo.example.ui.Popup;
-	import todo.example.view.api.IMainView;
 	import todo.example.ui.api.IPopup;
+	import todo.example.view.api.IMainView;
+	import todo.example.view.api.ITodoFormView;
 	import todo.example.view.api.ITodoListView;
 
 	public class AppConfiguration implements IConfig
@@ -50,6 +52,7 @@ package todo.example.config
 		private function mediators(): void
 		{
 			mediatorMap.map(IMainView).toMediator(MainViewMediator);
+			mediatorMap.map(ITodoFormView).toMediator(TodoFormViewMediator);
 			mediatorMap.map(ITodoListView).toMediator(TodoListViewMediator);
 		}
 		

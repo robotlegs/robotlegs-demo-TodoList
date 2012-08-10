@@ -1,5 +1,7 @@
 package todo.example.ui.api
 {
+	import flash.display.DisplayObject;
+	
 	import todo.example.view.api.IView;
 
 	public interface IPopup
