@@ -3,6 +3,13 @@
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx">
 	
+	<s:layout>
+		<s:VerticalLayout gap="10" />
+	</s:layout>
+	
+	<s:Button	id="createNewButton"
+				label="Create New Task" />			
+	
 	<s:Label	id="nothingTodoLabel"
 				text="Currently you have nothing to do." />
 	

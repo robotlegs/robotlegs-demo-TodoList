@@ -5,6 +5,7 @@ package todo.example
 	import todo.example.domain.TodoTests;
 	import todo.example.model.ModelTests;
 	import todo.example.view.MainViewTests;
+	import todo.example.view.TodoListViewTests;
 
 	[Suite]
 	[RunWith("org.flexunit.runners.Suite")]
@@ -14,6 +15,7 @@ package todo.example
 		public var appConfigurationTests: AppConfigurationTests;
 		
 		public var mainViewTests: MainViewTests;
+		public var todoListViewTests: TodoListViewTests;
 		
 		public var modelTests: ModelTests;
 		
