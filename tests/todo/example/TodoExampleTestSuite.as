@@ -3,6 +3,7 @@ package todo.example
 	import todo.example.bundle.AppBundleTests;
 	import todo.example.config.AppConfigurationTests;
 	import todo.example.domain.TodoTests;
+	import todo.example.mediator.TodoListViewMediatorTests;
 	import todo.example.model.ModelTests;
 	import todo.example.view.MainViewTests;
 	import todo.example.view.TodoListViewTests;
@@ -16,6 +17,8 @@ package todo.example
 		
 		public var mainViewTests: MainViewTests;
 		public var todoListViewTests: TodoListViewTests;
+		
+		public var todoListViewMediatorTests: TodoListViewMediatorTests;
 		
 		public var modelTests: ModelTests;
 		
