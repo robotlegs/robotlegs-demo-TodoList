@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		 xmlns:s="library://ns.adobe.com/flex/spark" 
-		 xmlns:mx="library://ns.adobe.com/flex/mx"
-		 height="160" width="400">
+<s:SkinnableContainer    xmlns:fx="http://ns.adobe.com/mxml/2009" 
+						 xmlns:s="library://ns.adobe.com/flex/spark" 
+						 xmlns:mx="library://ns.adobe.com/flex/mx"
+						 width="400"
+						 backgroundColor="0xffffff">
 	
-	<s:SkinnableContainer height="100%" width="100%"
-						  backgroundColor="0xffffff">
-		
-	</s:SkinnableContainer>
-	
-	<s:Group>
+	<s:Group width="100%">
 		<s:layout>
 			<s:VerticalLayout gap="5"
 							  paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10" />
 		</s:layout>
+		
+		<s:TextArea height="120" width="100%"
+					paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10"
+					prompt="What you have todo..."/>
+		
+		<s:Group width="100%">
+			<s:layout>
+				<s:HorizontalLayout horizontalAlign="right"
+									gap="5" />
+			</s:layout>
+			
+			<s:Button id="cancelButton"
+					  label="Cancel" />
+			
+			<s:Button id="saveButton"
+					  label="Save" />
+		</s:Group>
 	</s:Group>
-</s:Group>
+</s:SkinnableContainer>
