@@ -33,5 +33,10 @@ package todo.example.view
 		{
 			button.dispatchEvent(new MouseEvent(MouseEvent.CLICK));	
 		}
+		
+		/**
+		 * Dummy method used to test signals.
+		 */
+		protected function dummyMethod(): void { }
 	}
 }

@@ -39,6 +39,8 @@ package todo.example.view
 		
 		public function dispose():void
 		{
+			_cancelSignal.removeAll();
+			cancelButton.removeEventListener(MouseEvent.CLICK, cancel);
 		}
 	}
 }

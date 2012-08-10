@@ -1,6 +1,7 @@
 package todo.example.view
 {
 	import org.hamcrest.assertThat;
+	import org.hamcrest.object.equalTo;
 	import org.hamcrest.object.notNullValue;
 	import org.osflash.signals.utils.proceedOnSignal;
 	
@@ -44,6 +45,20 @@ package todo.example.view
 			
 			click(todoFormView.cancelButton);
 		}
+		
+		/**
+		 * Disposing of the view should remove all the listeners on the 
+		 * cancelSignal.
+		 */
+		[Test]
+		public function dispose_RemovesListenersToCancelSignal(): void
+		{
+			var todoFormView: TodoFormView = createView();
+			todoFormView.cancelSignal.add(dummyMethod);
+			todoFormView.dispose();
+			
+			assertThat(todoFormView.cancelSignal.numListeners, equalTo(0));
+		}	
 		
 		/**
 		 * Creates the test subject.

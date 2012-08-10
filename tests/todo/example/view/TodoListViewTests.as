@@ -66,7 +66,6 @@ package todo.example.view
 			assertThat(todoListView.createNewSignal.numListeners, equalTo(0));
 		}	
 		
-		
 		/**
 		 * Creates the test subject.
 		 */
@@ -76,10 +75,5 @@ package todo.example.view
 			addToUI(todoListView);
 			return todoListView;
 		}
-		
-		/**
-		 * Dummy method used to test signals.
-		 */
-		private function dummyMethod(): void { }
 	}
 }
