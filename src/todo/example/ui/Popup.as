@@ -42,6 +42,8 @@ package todo.example.ui
 		public function remove(view: IView): void
 		{
 			PopUpManager.removePopUp(view as UIComponent);
+			
+			viewManager.removeContainer(view as DisplayObjectContainer);
 		}
 	}
 }

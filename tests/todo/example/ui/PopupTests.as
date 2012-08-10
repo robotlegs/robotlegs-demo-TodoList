@@ -33,5 +33,22 @@ package todo.example.ui
 			
 			verify(times(1)).that(popup.viewManager.addContainer(any()));
 		}
+		
+		/**
+		 * Tests that when a popup is removed, it is removed as a container
+		 * to the viewManager to ensure that the mediator & view is collected
+		 * by the garbage collection.
+		 */
+		[Test]
+		public function remove_ShouldRemoveViewFromViewManager(): void
+		{
+			var myView: IView = mock(IView);
+			
+			var popup: Popup = new Popup();
+			popup.viewManager = mock(IViewManager);
+			popup.remove(myView);
+			
+			verify(times(1)).that(popup.viewManager.removeContainer(any()));
+		}
 	}
 }
