@@ -9,4 +9,4 @@ Example Todo list application written in Flex using the latest version of Robotl
 * User can modify an existing task from the todo list.
 * User is presented a message notify that there are no tasks when the todo list is empty.
 * User is given feedback when adding, modifying or deleting an item from the todo list.
-* Once the user has entered a new task, the entry form should be reset.
+* User can't enter a task that has no text.
