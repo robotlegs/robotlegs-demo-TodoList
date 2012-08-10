@@ -18,7 +18,8 @@ package todo.example.mediator
 
 	[Mock(type="todo.example.ui.api.IPopup")]
 	[Mock(type="todo.example.view.api.ITodoListView")]
-	public class TodoListViewMediatorTests
+	[Mock(type="robotlegs.bender.extensions.localEventMap.api.IEventMap")]
+	public class TodoListViewMediatorTests extends MediatorTests
 	{
 		private var _todoListView: ITodoListView;
 		
@@ -71,6 +72,9 @@ package todo.example.mediator
 			var todoListViewMediator: TodoListViewMediator = new TodoListViewMediator();
 			todoListViewMediator.popup = mock(IPopup);
 			todoListViewMediator.view = createMockOfTodoListView();
+			
+			setupMediator(todoListViewMediator);
+			
 			todoListViewMediator.initialize();
 			return todoListViewMediator;
 		}
