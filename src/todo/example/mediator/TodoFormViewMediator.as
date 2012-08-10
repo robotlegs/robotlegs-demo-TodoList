@@ -20,6 +20,14 @@ package todo.example.mediator
 			view.cancelSignal.add(cancel);
 		}
 		
+		override public function destroy():void
+		{
+			view.dispose();
+			
+			popup = null;
+			view = null;
+		}
+		
 		/**
 		 * Cancels the adding or modifying of 
 		 * a todo.

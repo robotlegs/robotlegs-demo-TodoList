@@ -1,5 +1,7 @@
 package todo.example.mediator
 {
+	import org.hamcrest.assertThat;
+	import org.hamcrest.object.isTrue;
 	import org.mockito.integrations.flexunit4.MockitoRule;
 	import org.mockito.integrations.given;
 	import org.mockito.integrations.mock;
@@ -28,9 +30,34 @@ package todo.example.mediator
 		{
 			var todoFormViewMediator: TodoFormViewMediator = createMediator();
 			simulateCancel();
-			
 			verify(times(1)).that(todoFormViewMediator.popup.remove(_todoFormView));
 		}
+		
+		/**
+		 * Tests when the mediator is destroyed the
+		 * view is disposed of.
+		 */
+		[Test]
+		public function destory_ViewIsDisposed(): void
+		{
+			var todoFormViewMediator: TodoFormViewMediator = createMediator();
+			todoFormViewMediator.destroy();	
+			verify(times(1)).that(_todoFormView.dispose());
+		}
+		
+		/**
+		 * Tests when the mediator is destory the dependencies
+		 * are nullified.
+		 */
+		[Test]
+		public function destory_NullifiesDependencies(): void
+		{
+			var todoFormViewMediator: TodoFormViewMediator = createMediator();
+			todoFormViewMediator.destroy();
+			
+			assertThat(!todoFormViewMediator.view && !todoFormViewMediator.popup, isTrue()); 
+		}
+		
 		
 		/**
 		 * Creates the test subject with its dependencies.
