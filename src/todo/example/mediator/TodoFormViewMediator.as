@@ -22,6 +22,8 @@ package todo.example.mediator
 		
 		override public function destroy():void
 		{
+			super.destroy();
+			
 			view.dispose();
 			
 			popup = null;
