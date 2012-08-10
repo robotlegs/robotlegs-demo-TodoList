@@ -19,6 +19,14 @@ package todo.example.view
 		}
 		
 		/**
+		 * Generic teardown for each test.
+		 */
+		public function after(): void
+		{
+			UIImpersonator.removeAllChildren();
+		}
+		
+		/**
 		 * Mimics the user clicking a button.
 		 */
 		protected function click(button: Button): void

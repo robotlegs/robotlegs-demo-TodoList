@@ -1,6 +1,12 @@
 package todo.example.view
 {
+	import flash.events.MouseEvent;
+	
+	import org.fluint.uiImpersonation.UIImpersonator;
 	import org.hamcrest.assertThat;
+	import org.hamcrest.object.equalTo;
+	import org.hamcrest.object.isFalse;
+	import org.hamcrest.object.isTrue;
 	import org.hamcrest.object.notNullValue;
 	import org.osflash.signals.ISignal;
 	import org.osflash.signals.Signal;
@@ -10,13 +16,19 @@ package todo.example.view
 
 	public class TodoListViewTests extends ViewTests
 	{
+		[After]
+		override public function after(): void
+		{
+			super.after();
+		}
+		
 		/**
 		 * Tests that the TodoListView implements ITodoListView.
 		 */
 		[Test]
 		public function implements_expectedInterface(): void
 		{
-			assertThat(new TodoListView() as ITodoListView, notNullValue());
+			assertThat(createView() as ITodoListView, notNullValue());
 		}
 		
 		/**
@@ -25,7 +37,7 @@ package todo.example.view
 		[Test]
 		public function default_createNewSignalIsNotNull(): void	
 		{
-			assertThat(new TodoListView().createNewSignal, notNullValue());
+			assertThat(createView().createNewSignal, notNullValue());
 		}
 		
 		/**
@@ -35,11 +47,39 @@ package todo.example.view
 		[Test(async)]
 		public function clickCreateNewButton_DispatchesCreateNewSignal(): void
 		{
-			var todoListView: TodoListView = new TodoListView();
-			addToUI(todoListView);
-
+			var todoListView: TodoListView = createView();
 			proceedOnSignal(this, todoListView.createNewSignal);
 			click(todoListView.createNewButton);
 		}
+		
+		/**
+		 * Disposing of the view should remove all the listeners on the 
+		 * createNewSignal.
+		 */
+		[Test]
+		public function dispose_RemovesListenersToCreateNewSignal(): void
+		{
+			var todoListView: TodoListView = createView();
+			todoListView.createNewSignal.add(dummyMethod);
+			todoListView.dispose();
+			
+			assertThat(todoListView.createNewSignal.numListeners, equalTo(0));
+		}	
+		
+		
+		/**
+		 * Creates the test subject.
+		 */
+		private function createView(): TodoListView
+		{
+			var todoListView: TodoListView = new TodoListView();
+			addToUI(todoListView);
+			return todoListView;
+		}
+		
+		/**
+		 * Dummy method used to test signals.
+		 */
+		private function dummyMethod(): void { }
 	}
 }

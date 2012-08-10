@@ -51,5 +51,14 @@ package todo.example.view
 		{
 			_createNewSignal.dispatch();
 		}
+		
+		/**
+		 * Disposes of the view.
+		 */
+		public function dispose(): void
+		{
+			createNewButton.removeEventListener(MouseEvent.CLICK, createNew);
+			_createNewSignal.removeAll();
+		}
 	}
 }

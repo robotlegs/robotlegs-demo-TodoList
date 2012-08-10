@@ -7,6 +7,12 @@ package todo.example.view
 	
 	public class MainView extends MainViewBase implements IMainView
 	{
-
+		/**
+		 * Disposes of the view.
+		 */
+		public function dispose(): void
+		{
+			
+		}
 	}
 }

@@ -10,9 +10,6 @@ package todo.example.mediator
 	public class MainViewMediator extends Mediator
 	{
 		[Inject]
-		public var model: IModel;
-		
-		[Inject]
 		public var view: IMainView;
 		
 		override public function initialize():void
