@@ -5,5 +5,8 @@ package todo.example.view.api
 	public interface ITodoFormView extends IView
 	{
 		function get cancelSignal(): ISignal;
+		function get saveSignal(): ISignal;
+		
+		function get taskDescription(): String;
 	}
 }

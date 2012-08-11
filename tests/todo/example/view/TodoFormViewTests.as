@@ -28,9 +28,18 @@ package todo.example.view
 		 * By default the cancelSignal should not be null.
 		 */
 		[Test]
-		public function default_cancelSignalIsntNull(): void
+		public function default_cancelSignalIsNotNull(): void
 		{
 			assertThat(createView().cancelSignal, notNullValue());
+		}
+		
+		/**
+		 * By default the saveSignal should not be null.
+		 */
+		[Test]
+		public function default_saveSignalIsNotNull(): void
+		{
+			assertThat(createView().saveSignal, notNullValue());
 		}
 		
 		/**
@@ -59,6 +68,33 @@ package todo.example.view
 			
 			assertThat(todoFormView.cancelSignal.numListeners, equalTo(0));
 		}	
+		
+		/**
+		 * Tests that the taskDescription property returns the value that
+		 * has been entered by the user in the text area.
+		 */
+		[Test]
+		public function taskDescription_ReturnsValueEnteredByUser(): void
+		{
+			const expectedValue: String = "My dummy task.";
+			var todoFormView: TodoFormView = createView();
+			todoFormView.taskDescriptionTextArea.text = expectedValue;
+			assertThat(todoFormView.taskDescription, equalTo(expectedValue));
+		}
+		
+		/**
+		 * When the user clicks the saveButton the saveSignal should be
+		 * dispatched to notify the application that the user wishes
+		 * to save a task.
+		 */
+		[Test(async)]
+		public function clickSaveButton_DispatchesTheSaveSignal(): void
+		{
+			var todoFormView: TodoFormView = createView();
+			proceedOnSignal(this, todoFormView.saveSignal);
+			click(todoFormView.saveButton);
+		}
+			
 		
 		/**
 		 * Creates the test subject.
