@@ -9,6 +9,17 @@ package todo.example.domain
 	{
 		private var _source: Vector.<Todo>;
 		
+		private var _changedSignal: Signal = new Signal();
+		
+		/**
+		 * Dispatched when the collection is
+		 * changed.
+		 */
+		public function get changed(): ISignal
+		{
+			return _changedSignal;
+		}
+		
 		/**
 		 * Returns the number of todos in the
 		 * collection.
@@ -29,6 +40,7 @@ package todo.example.domain
 		public function add(todo: Todo): void
 		{
 			_source.push(todo);
+			changed.dispatch();
 		}
 		
 		/**

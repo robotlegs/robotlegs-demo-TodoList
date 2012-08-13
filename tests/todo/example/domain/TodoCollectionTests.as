@@ -4,6 +4,7 @@ package todo.example.domain
 	import org.hamcrest.number.greaterThan;
 	import org.hamcrest.object.equalTo;
 	import org.hamcrest.object.notNullValue;
+	import org.osflash.signals.utils.proceedOnSignal;
 
 	public class TodoCollectionTests
 	{
@@ -23,6 +24,16 @@ package todo.example.domain
 		public function default_allReturnsEmptyCollection(): void
 		{
 			assertThat(new TodoCollection().all().length, equalTo(0));
+		}
+		
+		/**
+		 * Tests that by default the changed signal shouldn't be
+		 * null.
+		 */
+		[Test]
+		public function default_changedShouldNotBeNull(): void
+		{
+			assertThat(new TodoCollection().changed, notNullValue());
 		}
 		
 		/**
@@ -53,6 +64,20 @@ package todo.example.domain
 			todoCollection.add(newTodo);
 			
 			assertThat(todoCollection.all().indexOf(newTodo), greaterThan(-1));
+		}
+		
+		/**
+		 * Adding a new todo item should dispatch the changedSignal.
+		 */
+		[Test(async)]
+		public function add_DispatchesChangedSignal(): void
+		{
+			var newTodo: Todo = new Todo();
+			var todoCollection: TodoCollection = new TodoCollection();
+			
+			proceedOnSignal(this, todoCollection.changed);
+			
+			todoCollection.add(newTodo);
 		}
 	}
 }
