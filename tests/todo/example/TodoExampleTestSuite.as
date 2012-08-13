@@ -1,7 +1,9 @@
 package todo.example
 {
 	import todo.example.bundle.AppBundleTests;
+	import todo.example.command.CreateNewTodoCommandTests;
 	import todo.example.config.AppConfigurationTests;
+	import todo.example.domain.TodoCollectionTests;
 	import todo.example.domain.TodoTests;
 	import todo.example.mediator.TodoFormViewMediatorTests;
 	import todo.example.mediator.TodoListViewMediatorTests;
@@ -28,7 +30,10 @@ package todo.example
 		public var modelTests: ModelTests;
 		
 		public var todoTests: TodoTests;
+		public var todoCollectionTests: TodoCollectionTests;
 		
 		public var popupTests: PopupTests;
+		
+		public var createNewTodoCommandTests: CreateNewTodoCommandTests;
 	}
 }

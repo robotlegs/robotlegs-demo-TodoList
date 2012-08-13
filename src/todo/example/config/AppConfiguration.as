@@ -6,11 +6,13 @@ package todo.example.config
 	import robotlegs.bender.extensions.signalCommandMap.api.ISignalCommandMap;
 	import robotlegs.bender.framework.api.IConfig;
 	
+	import todo.example.command.CreateNewTodoCommand;
 	import todo.example.mediator.MainViewMediator;
 	import todo.example.mediator.TodoFormViewMediator;
 	import todo.example.mediator.TodoListViewMediator;
 	import todo.example.model.Model;
 	import todo.example.model.api.IModel;
+	import todo.example.signal.CreateNewTodoSignal;
 	import todo.example.ui.Popup;
 	import todo.example.ui.api.IPopup;
 	import todo.example.view.api.IMainView;
@@ -61,7 +63,7 @@ package todo.example.config
 		 */
 		private function signals(): void
 		{
-			
+			signalCommandMap.map(CreateNewTodoSignal).toCommand(CreateNewTodoCommand);
 		}
 	}
 }

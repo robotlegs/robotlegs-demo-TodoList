@@ -15,5 +15,14 @@ package todo.example.model
 		{
 			assertThat(new Model() as IModel, notNullValue());
 		}
+		
+		/**
+		 * By default the model should have a TodosCollection.
+		 */
+		[Test]
+		public function default_todosCollectionIsNotNull(): void
+		{
+			assertThat(new Model().todos, notNullValue());
+		}
 	}
 }

@@ -8,12 +8,15 @@ package todo.example.mediator
 	import org.mockito.integrations.times;
 	import org.mockito.integrations.verify;
 	import org.osflash.signals.Signal;
+	import org.osflash.signals.utils.proceedOnSignal;
 	
+	import todo.example.signal.CreateNewTodoSignal;
 	import todo.example.ui.api.IPopup;
 	import todo.example.view.api.ITodoFormView;
 
 	[Mock(type="todo.example.ui.api.IPopup")]
 	[Mock(type="todo.example.view.api.ITodoFormView")]
+	[Mock(type="todo.example.signal.CreateNewTodoSignal")]
 	[Mock(type="robotlegs.bender.extensions.localEventMap.api.IEventMap")]
 	public class TodoFormViewMediatorTests extends MediatorTests
 	{
@@ -59,6 +62,20 @@ package todo.example.mediator
 			assertThat(!todoFormViewMediator.view && !todoFormViewMediator.popup, isTrue()); 
 		}
 		
+		/**
+		 * Tests that when the saveSignal on the view is dispatched the createNewTodoSignal
+		 * is dispatched.
+		 */
+		[Test]
+		public function saveSignalDispatched_ShouldDispatchCreateNewTodoSignal(): void
+		{
+			const expectedTaskDescription: String = "My dummy task.";
+			
+			var todoFormViewMediator: TodoFormViewMediator = createMediator();
+			simulateSave(expectedTaskDescription);
+			
+			verify(times(1)).that(todoFormViewMediator.createNewTodoSignal.dispatch(expectedTaskDescription));
+		}
 		
 		/**
 		 * Creates the test subject with its dependencies.
@@ -68,6 +85,7 @@ package todo.example.mediator
 			var todoFormViewMediator: TodoFormViewMediator = new TodoFormViewMediator();
 			todoFormViewMediator.popup = mock(IPopup);
 			todoFormViewMediator.view = createMockOfTodoFormView();
+			todoFormViewMediator.createNewTodoSignal = mock(CreateNewTodoSignal);
 			
 			setupMediator(todoFormViewMediator);
 			
@@ -82,6 +100,7 @@ package todo.example.mediator
 		{
 			_todoFormView = mock(ITodoFormView);
 			given(_todoFormView.cancelSignal).willReturn(new Signal());
+			given(_todoFormView.saveSignal).willReturn(new Signal());
 			return _todoFormView;
 		}
 		
@@ -91,6 +110,15 @@ package todo.example.mediator
 		private function simulateCancel(): void
 		{
 			(_todoFormView.cancelSignal as Signal).dispatch();
+		}
+		
+		/**
+		 * Simulates the user wanting to save the todo form.
+		 */
+		private function simulateSave(taskDescription: String): void
+		{
+			given(_todoFormView.taskDescription).willReturn(taskDescription);
+			(_todoFormView.saveSignal as Signal).dispatch();
 		}
 	}
 }
