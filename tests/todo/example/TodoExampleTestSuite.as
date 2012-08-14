@@ -9,6 +9,7 @@ package todo.example
 	import todo.example.mediator.TodoListViewMediatorTests;
 	import todo.example.model.ModelTests;
 	import todo.example.ui.PopupTests;
+	import todo.example.util.VectorUtilTests;
 	import todo.example.view.MainViewTests;
 	import todo.example.view.TodoFormViewTests;
 	import todo.example.view.TodoListViewTests;
@@ -35,5 +36,7 @@ package todo.example
 		public var popupTests: PopupTests;
 		
 		public var createNewTodoCommandTests: CreateNewTodoCommandTests;
+		
+		public var vectorUtilTests: VectorUtilTests;
 	}
 }

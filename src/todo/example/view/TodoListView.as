@@ -2,9 +2,12 @@ package todo.example.view
 {
 	import flash.events.MouseEvent;
 	
+	import mx.collections.ArrayCollection;
+	
 	import org.osflash.signals.ISignal;
 	import org.osflash.signals.Signal;
 	
+	import todo.example.domain.Todo;
 	import todo.example.view.api.ITodoListView;
 	import todo.example.view.ui.TodoListViewBase;
 	
@@ -59,6 +62,15 @@ package todo.example.view
 		{
 			createNewButton.removeEventListener(MouseEvent.CLICK, createNew);
 			_createNewSignal.removeAll();
+		}
+		
+		/**
+		 * Sets the tasks that are to be displayed on the todo
+		 * list.
+		 */
+		public function setTasks(todos: ArrayCollection): void
+		{
+			todoList.dataProvider = todos;
 		}
 	}
 }

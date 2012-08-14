@@ -15,7 +15,7 @@ package todo.example.domain
 		 * Dispatched when the collection is
 		 * changed.
 		 */
-		public function get changed(): ISignal
+		public function get changedSignal(): ISignal
 		{
 			return _changedSignal;
 		}
@@ -40,7 +40,7 @@ package todo.example.domain
 		public function add(todo: Todo): void
 		{
 			_source.push(todo);
-			changed.dispatch();
+			_changedSignal.dispatch();
 		}
 		
 		/**

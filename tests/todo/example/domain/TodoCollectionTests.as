@@ -33,7 +33,7 @@ package todo.example.domain
 		[Test]
 		public function default_changedShouldNotBeNull(): void
 		{
-			assertThat(new TodoCollection().changed, notNullValue());
+			assertThat(new TodoCollection().changedSignal, notNullValue());
 		}
 		
 		/**
@@ -75,7 +75,7 @@ package todo.example.domain
 			var newTodo: Todo = new Todo();
 			var todoCollection: TodoCollection = new TodoCollection();
 			
-			proceedOnSignal(this, todoCollection.changed);
+			proceedOnSignal(this, todoCollection.changedSignal);
 			
 			todoCollection.add(newTodo);
 		}

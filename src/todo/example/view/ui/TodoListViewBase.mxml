@@ -13,4 +13,7 @@
 	<s:Label	id="nothingTodoLabel"
 				text="Currently you have nothing to do." />
 	
+	<s:List id="todoList"
+			labelField="task" />
+	
 </s:Group>

@@ -2,6 +2,8 @@ package todo.example.view
 {
 	import flash.events.MouseEvent;
 	
+	import mx.collections.ArrayCollection;
+	
 	import org.fluint.uiImpersonation.UIImpersonator;
 	import org.hamcrest.assertThat;
 	import org.hamcrest.object.equalTo;
@@ -12,6 +14,7 @@ package todo.example.view
 	import org.osflash.signals.Signal;
 	import org.osflash.signals.utils.proceedOnSignal;
 	
+	import todo.example.domain.Todo;
 	import todo.example.view.api.ITodoListView;
 
 	public class TodoListViewTests extends ViewTests
@@ -65,6 +68,20 @@ package todo.example.view
 			
 			assertThat(todoListView.createNewSignal.numListeners, equalTo(0));
 		}	
+		
+		/**
+		 * setTask should set the argument received onto the todoList.
+		 */
+		[Test]
+		public function setTask_ShouldSetDataProviderOnTodoList(): void
+		{
+			var expectedTodos: ArrayCollection = new ArrayCollection();
+			
+			var todoListView: TodoListView = createView();
+			todoListView.setTasks(expectedTodos);
+			
+			assertThat(todoListView.todoList.dataProvider, equalTo(expectedTodos));
+		}
 		
 		/**
 		 * Creates the test subject.
