@@ -3,12 +3,12 @@ package todo.example.command
 	import robotlegs.bender.bundles.mvcs.Command;
 	
 	import todo.example.domain.Todo;
-	import todo.example.model.api.IModel;
+	import todo.example.domain.api.ITodoCollection;
 	
 	public class CreateNewTodoCommand extends Command
 	{
 		[Inject]
-		public var model: IModel;
+		public var todoCollection: ITodoCollection;
 		
 		[Inject]
 		public var taskDescription: String;
@@ -18,7 +18,7 @@ package todo.example.command
 			var newTodo: Todo = new Todo();
 			newTodo.task = taskDescription;
 			
-			model.todos.add(newTodo);
+			todoCollection.add(newTodo);
 		}
 	}
 }

@@ -7,7 +7,6 @@ package todo.example
 	import todo.example.domain.TodoTests;
 	import todo.example.mediator.TodoFormViewMediatorTests;
 	import todo.example.mediator.TodoListViewMediatorTests;
-	import todo.example.model.ModelTests;
 	import todo.example.ui.PopupTests;
 	import todo.example.util.VectorUtilTests;
 	import todo.example.view.MainViewTests;
@@ -27,8 +26,6 @@ package todo.example
 		
 		public var todoFormViewMediatorTests: TodoFormViewMediatorTests;
 		public var todoListViewMediatorTests: TodoListViewMediatorTests;
-		
-		public var modelTests: ModelTests;
 		
 		public var todoTests: TodoTests;
 		public var todoCollectionTests: TodoCollectionTests;

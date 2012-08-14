@@ -4,7 +4,6 @@ package todo.example.mediator
 	
 	import robotlegs.bender.bundles.mvcs.Mediator;
 	
-	import todo.example.model.api.IModel;
 	import todo.example.view.api.IMainView;
 	
 	public class MainViewMediator extends Mediator

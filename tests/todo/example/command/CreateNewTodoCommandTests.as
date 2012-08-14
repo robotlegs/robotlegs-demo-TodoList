@@ -13,21 +13,17 @@ package todo.example.command
 	import org.mockito.integrations.verify;
 	
 	import todo.example.domain.Todo;
-	import todo.example.domain.TodoCollection;
-	import todo.example.model.api.IModel;
+	import todo.example.domain.api.ITodoCollection;
 
-	[Mock(type="todo.example.model.api.IModel")]
-	[Mock(type="todo.example.domain.TodoCollection")]
+	[Mock(type="todo.example.domain.api.ITodoCollection")]
 	public class CreateNewTodoCommandTests
 	{
 		[Rule]
 		public var mockitoRule: MockitoRule = new MockitoRule();
 		
-		private var _todoCollection: TodoCollection;
-		
 		/**
-		 * Tests that the command adds a new Todo to the todos collection on the
-		 * model with the task description that is set.
+		 * Tests that the command adds a new Todo to the todos collection
+		 * with the task description that is set.
 		 */
 		[Test]
 		public function execute_todoWithTaskDescriptionIsAddedToCollection(): void
@@ -38,7 +34,7 @@ package todo.example.command
 			createNewTodoCommand.taskDescription = expectedTaskDescription;
 			createNewTodoCommand.execute();
 			
-			verify(times(1)).that(_todoCollection.add(havingPropertyOf("task", expectedTaskDescription)));
+			verify(times(1)).that(createNewTodoCommand.todoCollection.add(havingPropertyOf("task", expectedTaskDescription)));
 		}
 		
 		/**
@@ -47,11 +43,7 @@ package todo.example.command
 		private function createCommand(): CreateNewTodoCommand
 		{
 			var createNewTodoCommand: CreateNewTodoCommand = new CreateNewTodoCommand();
-			createNewTodoCommand.model = mock(IModel);
-			
-			_todoCollection = mock(TodoCollection);
-			given(createNewTodoCommand.model.todos).willReturn(_todoCollection);
-			
+			createNewTodoCommand.todoCollection = mock(ITodoCollection);
 			return createNewTodoCommand;
 		}
 	}

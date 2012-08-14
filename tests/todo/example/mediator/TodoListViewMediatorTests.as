@@ -16,15 +16,13 @@ package todo.example.mediator
 	import org.osflash.signals.Signal;
 	
 	import todo.example.domain.Todo;
-	import todo.example.domain.TodoCollection;
-	import todo.example.model.api.IModel;
+	import todo.example.domain.api.ITodoCollection;
 	import todo.example.ui.api.IPopup;
 	import todo.example.view.TodoFormView;
 	import todo.example.view.api.ITodoFormView;
 	import todo.example.view.api.ITodoListView;
 
-	[Mock(type="todo.example.model.api.IModel")]
-	[Mock(type="todo.example.domain.TodoCollection")]
+	[Mock(type="todo.example.domain.api.ITodoCollection")]
 	[Mock(type="todo.example.ui.api.IPopup")]
 	[Mock(type="todo.example.view.api.ITodoListView")]
 	[Mock(type="robotlegs.bender.extensions.localEventMap.api.IEventMap")]
@@ -70,7 +68,7 @@ package todo.example.mediator
 			var todoListViewMediator: TodoListViewMediator = createMediator();
 			todoListViewMediator.destroy();
 			
-			assertThat(!todoListViewMediator.view && !todoListViewMediator.popup && !todoListViewMediator.model, isTrue());
+			assertThat(!todoListViewMediator.view && !todoListViewMediator.popup && !todoListViewMediator.todoCollection, isTrue());
 		}
 		
 		/**
@@ -83,18 +81,21 @@ package todo.example.mediator
 			var expectedTodos: Vector.<Todo> = createFakeTodos();
 			var todoListViewMediator: TodoListViewMediator = createMediator(false);
 			
-			setupTodosOnModel(todoListViewMediator.model, expectedTodos);
+			setupTodosCollection(todoListViewMediator.todoCollection, expectedTodos);
 			todoListViewMediator.initialize();
 			
-			changeTodosCollection(todoListViewMediator.model.todos);
+			changeTodosCollection(todoListViewMediator.todoCollection);
 			
+			// this needs to be refactored so the verification is that
+			// the item returned by the all() method on TodoCollection
+			// is passed to setTasks instead of any().
 			verify(times(1)).that(_todoListView.setTasks(any()));
 		}
 		
 		/**
 		 * Simulates the todos collection being changed.
 		 */
-		private function changeTodosCollection(todoCollection: TodoCollection): void
+		private function changeTodosCollection(todoCollection: ITodoCollection): void
 		{
 			(todoCollection.changedSignal as Signal).dispatch();
 		}
@@ -119,12 +120,12 @@ package todo.example.mediator
 			var todoListViewMediator: TodoListViewMediator = new TodoListViewMediator();
 			todoListViewMediator.popup = mock(IPopup);
 			todoListViewMediator.view = createMockOfTodoListView();
-			todoListViewMediator.model = mock(IModel);
+			todoListViewMediator.todoCollection = mock(ITodoCollection);
 			
 			setupMediator(todoListViewMediator);
 			
 			if (initialize) {
-				setupTodosOnModel(todoListViewMediator.model, new Vector.<Todo>());
+				setupTodosCollection(todoListViewMediator.todoCollection, new Vector.<Todo>());
 				todoListViewMediator.initialize();
 			}
 			
@@ -142,16 +143,13 @@ package todo.example.mediator
 		}
 		
 		/**
-		 * Sets up the TodoCollection that is stored on the todos property
-		 * on the model.
+		 * Sets up the TodoCollection so it returns the tasks argument when
+		 * the all() method is accessed, and also so it has a changedSignal.
 		 */
-		private function setupTodosOnModel(model: IModel, tasks: Vector.<Todo>): void
+		private function setupTodosCollection(todoCollection: ITodoCollection, tasks: Vector.<Todo>): void
 		{
-			var todoCollection: TodoCollection = mock(TodoCollection);
 			given(todoCollection.changedSignal).willReturn(new Signal());
 			given(todoCollection.all()).willReturn(tasks);
-			
-			given(model.todos).willReturn(todoCollection);
 		}
 		
 		/**

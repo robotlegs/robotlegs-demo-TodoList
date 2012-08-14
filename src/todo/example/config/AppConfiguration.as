@@ -7,11 +7,11 @@ package todo.example.config
 	import robotlegs.bender.framework.api.IConfig;
 	
 	import todo.example.command.CreateNewTodoCommand;
+	import todo.example.domain.TodoCollection;
+	import todo.example.domain.api.ITodoCollection;
 	import todo.example.mediator.MainViewMediator;
 	import todo.example.mediator.TodoFormViewMediator;
 	import todo.example.mediator.TodoListViewMediator;
-	import todo.example.model.Model;
-	import todo.example.model.api.IModel;
 	import todo.example.signal.CreateNewTodoSignal;
 	import todo.example.ui.Popup;
 	import todo.example.ui.api.IPopup;
@@ -44,7 +44,7 @@ package todo.example.config
 		 */
 		private function dependencies(): void
 		{
-			injector.map(IModel).toSingleton(Model);
+			injector.map(ITodoCollection).toSingleton(TodoCollection);
 			injector.map(IPopup).toSingleton(Popup);
 		}
 		
