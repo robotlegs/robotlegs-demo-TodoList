@@ -4,8 +4,10 @@ package todo.example.domain
 	
 	import org.osflash.signals.ISignal;
 	import org.osflash.signals.Signal;
+	
+	import todo.example.domain.api.ITodoCollection;
 
-	public class TodoCollection
+	public class TodoCollection implements ITodoCollection
 	{
 		private var _source: Vector.<Todo>;
 		
