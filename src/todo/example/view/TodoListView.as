@@ -14,7 +14,7 @@ package todo.example.view
 	
 	public class TodoListView extends TodoListViewBase implements ITodoListView
 	{
-		private var _completeSignal: ISignal = new Signal(Todo);
+		private var _completeSignal: ISignal;
 		
 		/**
 		 * Dispatched when the user wishes to mark a form
@@ -37,9 +37,22 @@ package todo.example.view
 			return _createNewSignal;
 		}
 		
+		private var _modifySignal: ISignal;
+		
+		/**
+		 * Dispatched when the user wishes to modify
+		 * a todo item.
+		 */
+		public function get modifySignal(): ISignal
+		{
+			return _modifySignal;
+		}
+		
 		public function TodoListView()
 		{
 			_createNewSignal = new Signal();
+			_completeSignal = new Signal(Todo);
+			_modifySignal = new Signal(Todo);
 		}
 		
 		override protected function childrenCreated():void
@@ -57,6 +70,7 @@ package todo.example.view
 		{
 			createNewButton.addEventListener(MouseEvent.CLICK, createNew);
 			todoList.addEventListener(TodoListEvent.COMPLETE, completeTodo);
+			todoList.addEventListener(TodoListEvent.MODIFY, modifyTodo);
 		}
 		
 		/**
@@ -85,9 +99,21 @@ package todo.example.view
 		{
 			createNewButton.removeEventListener(MouseEvent.CLICK, createNew);
 			todoList.removeEventListener(TodoListEvent.COMPLETE, completeTodo);
+			todoList.removeEventListener(TodoListEvent.MODIFY, modifyTodo);
 			
 			_createNewSignal.removeAll();
 			_completeSignal.removeAll();
+			_modifySignal.removeAll();
+		}
+		
+		/**
+		 * Dispatches the modifySignal to that notifies the application
+		 * that the user wishes to modify the todo item that is contained
+		 * within the event parameter.
+		 */
+		private function modifyTodo(e: TodoListEvent): void
+		{
+			_modifySignal.dispatch(e.todo);
 		}
 		
 		/**

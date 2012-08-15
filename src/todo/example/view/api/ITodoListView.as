@@ -8,6 +8,7 @@ package todo.example.view.api
 	{
 		function get createNewSignal(): ISignal;
 		function get completeSignal(): ISignal;
+		function get modifySignal(): ISignal;
 		
 		function setTodos(todos: ArrayCollection): void;
 	}

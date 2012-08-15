@@ -64,6 +64,15 @@ package todo.example.view
 		{
 			assertThat(createView().completeSignal, notNullValue());
 		}
+
+		/**
+		 * By default the modifySignal shouldn't be null.
+		 */
+		[Test]
+		public function default_modifySignalIsNotNull(): void
+		{
+			assertThat(createView().modifySignal, notNullValue());
+		}
 		
 		/**
 		 * Tests that when the createNewButton is clicked then the createNewSignal
@@ -103,6 +112,20 @@ package todo.example.view
 			todoListView.dispose();
 			
 			assertThat(todoListView.completeSignal.numListeners, equalTo(0));
+		}	
+		
+		/**
+		 * Disposing of the view should remove all the listeners on the 
+		 * modifySignal.
+		 */
+		[Test]
+		public function dispose_RemovesListenersToModifySignal(): void
+		{
+			var todoListView: TodoListView = createView();
+			todoListView.modifySignal.add(dummyMethod);
+			todoListView.dispose();
+			
+			assertThat(todoListView.modifySignal.numListeners, equalTo(0));
 		}	
 		
 		/**
@@ -180,13 +203,18 @@ package todo.example.view
 		}
 		
 		/**
-		 * Simulates the user trigger the completion of a todo.
+		 * When the user wants to modify a todo, the modifySignal should
+		 * dispatch containing the todo in question.
 		 */
-		private function simulateComplete(todoListView: TodoListView, todo: Todo): void
+		[Test(async)]
+		public function modifyTodo_DispatchesModifySignalWithTodo(): void
 		{
-			todoListView.todoList.dispatchEvent(new TodoListEvent(TodoListEvent.COMPLETE, todo));
+			var expectedTodo: Todo = new Todo();
+			var todoListView: TodoListView = createView();
+			handleSignal(this, todoListView.modifySignal, verifyTodo, 500, expectedTodo);
+			simulateModify(todoListView, expectedTodo);
 		}
-		
+
 		/**
 		 * Creates the test subject.
 		 */
@@ -195,6 +223,22 @@ package todo.example.view
 			var todoListView: TodoListView = new TodoListView();
 			addToUI(todoListView);
 			return todoListView;
+		}
+
+		/**
+		 * Simulates the user trigger the completion of a todo.
+		 */
+		private function simulateComplete(todoListView: TodoListView, todo: Todo): void
+		{
+			todoListView.todoList.dispatchEvent(new TodoListEvent(TodoListEvent.COMPLETE, todo));
+		}
+		
+		/**
+		 * Simulates the user trigger the modifiction of a todo.
+		 */
+		private function simulateModify(todoListView: TodoListView, todo: Todo): void
+		{
+			todoListView.todoList.dispatchEvent(new TodoListEvent(TodoListEvent.MODIFY, todo));
 		}
 		
 		/**
