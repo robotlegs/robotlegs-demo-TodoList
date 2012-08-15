@@ -1,6 +1,10 @@
 package todo.example.components.todoList
 {
+	import mx.core.ClassFactory;
+	
 	import spark.components.List;
+	
+	import todo.example.components.todoList.todoListClasses.TodoListItemRenderer;
 
 	public class TodoList extends List
 	{
@@ -17,8 +21,8 @@ package todo.example.components.todoList
 		 */
 		private function setDefaults(): void
 		{
-			labelField = "task";
-			setStyle("borderVisible", false);			
+			setStyle("borderVisible", false);		
+			itemRenderer = new ClassFactory(TodoListItemRenderer);
 		}
 	}
 }
