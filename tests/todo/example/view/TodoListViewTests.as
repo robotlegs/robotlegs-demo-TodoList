@@ -80,15 +80,15 @@ package todo.example.view
 		}	
 		
 		/**
-		 * setTask should set the argument received onto the todoList.
+		 * setTodos should set the argument received onto the todoList.
 		 */
 		[Test]
-		public function setTask_ShouldSetDataProviderOnTodoList(): void
+		public function setTodos_ShouldSetDataProviderOnTodoList(): void
 		{
 			var expectedTodos: ArrayCollection = new ArrayCollection();
 			
 			var todoListView: TodoListView = createView();
-			todoListView.setTasks(expectedTodos);
+			todoListView.setTodos(expectedTodos);
 			assertThat(todoListView.todoList.dataProvider, equalTo(expectedTodos));
 		}
 		
@@ -97,10 +97,10 @@ package todo.example.view
 		 * UI component should be hidden.
 		 */
 		[Test]
-		public function setTask_NoTasks_todoListShouldBeHidden(): void
+		public function setTodos_NoTasks_todoListShouldBeHidden(): void
 		{
 			var todoListView: TodoListView = createView();
-			todoListView.setTasks(new ArrayCollection());
+			todoListView.setTodos(new ArrayCollection());
 			assertThat(todoListView.todoList.visible, isFalse());
 		}
 		
@@ -109,10 +109,10 @@ package todo.example.view
 		 * stating that there is nothing to do should be visible.
 		 */
 		[Test]
-		public function setTask_NoTasks_nothingTodoLabelShouldBeVisible(): void
+		public function setTodos_NoTasks_nothingTodoLabelShouldBeVisible(): void
 		{
 			var todoListView: TodoListView = createView();
-			todoListView.setTasks(new ArrayCollection());
+			todoListView.setTodos(new ArrayCollection());
 			assertThat(todoListView.nothingTodoLabel.visible, isTrue());
 		}
 		
@@ -121,10 +121,10 @@ package todo.example.view
 		 * UI component should be visible.
 		 */
 		[Test]
-		public function setTask_WithTasks_todoListShouldBeVisible(): void
+		public function setTodos_WithTasks_todoListShouldBeVisible(): void
 		{
 			var todoListView: TodoListView = createView();
-			todoListView.setTasks(new ArrayCollection([new Todo(), new Todo(), new Todo()]));
+			todoListView.setTodos(new ArrayCollection([new Todo(), new Todo(), new Todo()]));
 			assertThat(todoListView.todoList.visible, isTrue());
 		}
 		
@@ -133,10 +133,10 @@ package todo.example.view
 		 * that there are no todos should be hidden.
 		 */
 		[Test]
-		public function setTask_WithTasks_nothingTodoLabelShouldBeHidden(): void
+		public function setTodos_WithTasks_nothingTodoLabelShouldBeHidden(): void
 		{
 			var todoListView: TodoListView = createView();
-			todoListView.setTasks(new ArrayCollection([new Todo(), new Todo(), new Todo()]));
+			todoListView.setTodos(new ArrayCollection([new Todo(), new Todo(), new Todo()]));
 			assertThat(todoListView.nothingTodoLabel.visible, isFalse());
 		}
 		

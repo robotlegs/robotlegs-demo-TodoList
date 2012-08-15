@@ -65,10 +65,10 @@ package todo.example.view
 		}
 		
 		/**
-		 * Sets the tasks that are to be displayed on the todo
+		 * Sets the todos that are to be displayed on the todo
 		 * list.
 		 */
-		public function setTasks(todos: ArrayCollection): void
+		public function setTodos(todos: ArrayCollection): void
 		{
 			todoList.dataProvider = todos;
 			

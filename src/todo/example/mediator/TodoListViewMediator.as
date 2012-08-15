@@ -54,7 +54,7 @@ package todo.example.mediator
 		 */
 		private function setTodosOnView(): void
 		{
-			view.setTasks(todoCollection.all());
+			view.setTodos(todoCollection.all());
 		}
 	}
 }

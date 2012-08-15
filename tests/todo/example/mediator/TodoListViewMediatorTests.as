@@ -86,7 +86,7 @@ package todo.example.mediator
 			
 			changeTodosCollection(todoListViewMediator.todoCollection);
 			
-			verify(times(1)).that(_todoListView.setTasks(expectedTodos));
+			verify(times(1)).that(_todoListView.setTodos(expectedTodos));
 		}
 		
 		/**
