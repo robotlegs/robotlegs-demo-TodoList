@@ -40,6 +40,11 @@ package todo.example.view
 			return (taskDescriptionTextArea) ? taskDescriptionTextArea.text : null;
 		}
 		
+		public function set taskDescription(value: String): void
+		{
+			taskDescriptionTextArea.text = value;
+		}
+		
 		override protected function childrenCreated():void
 		{
 			super.childrenCreated();

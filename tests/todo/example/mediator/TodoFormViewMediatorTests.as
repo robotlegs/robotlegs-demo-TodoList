@@ -10,6 +10,8 @@ package todo.example.mediator
 	import org.osflash.signals.Signal;
 	import org.osflash.signals.utils.proceedOnSignal;
 	
+	import todo.example.domain.Todo;
+	import todo.example.domain.api.ITodoCollection;
 	import todo.example.signal.CreateNewTodoSignal;
 	import todo.example.ui.api.IPopup;
 	import todo.example.view.api.ITodoFormView;
@@ -18,6 +20,7 @@ package todo.example.mediator
 	[Mock(type="todo.example.view.api.ITodoFormView")]
 	[Mock(type="todo.example.signal.CreateNewTodoSignal")]
 	[Mock(type="robotlegs.bender.extensions.localEventMap.api.IEventMap")]
+	[Mock(type="todo.example.domain.api.ITodoCollection")]
 	public class TodoFormViewMediatorTests extends MediatorTests
 	{
 		private var _todoFormView: ITodoFormView;
@@ -91,14 +94,34 @@ package todo.example.mediator
 		}
 		
 		/**
+		 * When the mediator is initialized, if there is an active Todo on the todo
+		 * collection, then the description of the task should be set as the taskDescription
+		 * on the view.
+		 */
+		[Test]
+		public function initialize_WithActiveTodo_SetsTaskDescriptionOnView(): void
+		{
+			const expectedTaskDescription: String = "My dummy task.";
+			var activeTodo: Todo = new Todo();
+			activeTodo.task = expectedTaskDescription;
+			
+			var todoFormViewMediator: TodoFormViewMediator = createMediator(activeTodo);
+			
+			verify(times(1)).that(todoFormViewMediator.view.taskDescription = expectedTaskDescription);
+		}
+		
+		/**
 		 * Creates the test subject with its dependencies.
 		 */
-		private function createMediator(): TodoFormViewMediator
+		private function createMediator(activeTodo: Todo = null): TodoFormViewMediator
 		{
 			var todoFormViewMediator: TodoFormViewMediator = new TodoFormViewMediator();
 			todoFormViewMediator.popup = mock(IPopup);
 			todoFormViewMediator.view = createMockOfTodoFormView();
 			todoFormViewMediator.createNewTodoSignal = mock(CreateNewTodoSignal);
+			
+			todoFormViewMediator.todoCollection = mock(ITodoCollection);
+			given(todoFormViewMediator.todoCollection.activeTodo).willReturn(activeTodo);
 			
 			setupMediator(todoFormViewMediator);
 			

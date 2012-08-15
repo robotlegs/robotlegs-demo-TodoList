@@ -83,6 +83,19 @@ package todo.example.view
 		}
 		
 		/**
+		 * Tests that setting a value on taskDescription sets the text of the
+		 * taskDescriptionTextArea.
+		 */
+		[Test]
+		public function taskDescription_SetValue_SetsTextAreaText(): void
+		{
+			const expectedValue: String = "My dummy task.";
+			var todoFormView: TodoFormView = createView();
+			todoFormView.taskDescription = expectedValue;
+			assertThat(todoFormView.taskDescriptionTextArea.text, equalTo(expectedValue));
+		}
+		
+		/**
 		 * When the user clicks the saveButton the saveSignal should be
 		 * dispatched to notify the application that the user wishes
 		 * to save a task.

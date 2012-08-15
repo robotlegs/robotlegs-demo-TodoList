@@ -10,5 +10,6 @@ package todo.example.view.api
 		function get saveSignal(): ISignal;
 		
 		function get taskDescription(): String;
+		function set taskDescription(value: String): void;
 	}
 }
