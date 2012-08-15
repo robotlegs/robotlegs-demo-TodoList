@@ -71,6 +71,9 @@ package todo.example.view
 		public function setTasks(todos: ArrayCollection): void
 		{
 			todoList.dataProvider = todos;
+			
+			todoList.includeInLayout = todoList.visible = todos.length > 0;
+			nothingTodoLabel.includeInLayout = nothingTodoLabel.visible = !todoList.visible;
 		}
 	}
 }

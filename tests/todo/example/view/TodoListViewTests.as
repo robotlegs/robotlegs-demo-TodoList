@@ -44,6 +44,16 @@ package todo.example.view
 		}
 		
 		/**
+		 * By default the todoList should be hidden because it
+		 * won't contain any items.
+		 */
+		[Test]
+		public function default_todoListShouldBeHidden(): void
+		{
+			assertThat(createView().todoList.visible, isFalse());
+		}
+		
+		/**
 		 * Tests that when the createNewButton is clicked then the createNewSignal
 		 * should be dispatched.
 		 */
@@ -79,8 +89,55 @@ package todo.example.view
 			
 			var todoListView: TodoListView = createView();
 			todoListView.setTasks(expectedTodos);
-			
 			assertThat(todoListView.todoList.dataProvider, equalTo(expectedTodos));
+		}
+		
+		/**
+		 * When an empty collection of todos is set on the view, the todoList
+		 * UI component should be hidden.
+		 */
+		[Test]
+		public function setTask_NoTasks_todoListShouldBeHidden(): void
+		{
+			var todoListView: TodoListView = createView();
+			todoListView.setTasks(new ArrayCollection());
+			assertThat(todoListView.todoList.visible, isFalse());
+		}
+		
+		/**
+		 * When an empty collection of todos is set on the view, the message
+		 * stating that there is nothing to do should be visible.
+		 */
+		[Test]
+		public function setTask_NoTasks_nothingTodoLabelShouldBeVisible(): void
+		{
+			var todoListView: TodoListView = createView();
+			todoListView.setTasks(new ArrayCollection());
+			assertThat(todoListView.nothingTodoLabel.visible, isTrue());
+		}
+		
+		/**
+		 * When a collection of todos is set on the view, the todoList
+		 * UI component should be visible.
+		 */
+		[Test]
+		public function setTask_WithTasks_todoListShouldBeVisible(): void
+		{
+			var todoListView: TodoListView = createView();
+			todoListView.setTasks(new ArrayCollection([new Todo(), new Todo(), new Todo()]));
+			assertThat(todoListView.todoList.visible, isTrue());
+		}
+		
+		/**
+		 * When a collection of todos is set on the view, the message stating
+		 * that there are no todos should be hidden.
+		 */
+		[Test]
+		public function setTask_WithTasks_nothingTodoLabelShouldBeHidden(): void
+		{
+			var todoListView: TodoListView = createView();
+			todoListView.setTasks(new ArrayCollection([new Todo(), new Todo(), new Todo()]));
+			assertThat(todoListView.nothingTodoLabel.visible, isFalse());
 		}
 		
 		/**

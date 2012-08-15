@@ -4,7 +4,7 @@
 		 xmlns:mx="library://ns.adobe.com/flex/mx">
 	
 	<s:layout>
-		<s:VerticalLayout gap="10" />
+		<s:VerticalLayout gap="25" />
 	</s:layout>
 	
 	<s:Button	id="createNewButton"
@@ -14,6 +14,8 @@
 				text="Currently you have nothing to do." />
 	
 	<s:List id="todoList"
-			labelField="task" />
+			labelField="task"
+			includeInLayout="false" visible="false"
+			borderVisible="false" />
 	
 </s:Group>
