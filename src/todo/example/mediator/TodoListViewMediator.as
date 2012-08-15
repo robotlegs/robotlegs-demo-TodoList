@@ -1,9 +1,13 @@
 package todo.example.mediator
 {
+	import flashx.textLayout.tlf_internal;
+	
 	import robotlegs.bender.bundles.mvcs.Mediator;
 	
+	import todo.example.domain.Todo;
 	import todo.example.domain.TodoCollection;
 	import todo.example.domain.api.ITodoCollection;
+	import todo.example.signal.CompleteTodoSignal;
 	import todo.example.ui.api.IPopup;
 	import todo.example.util.VectorUtil;
 	import todo.example.view.TodoFormView;
@@ -11,6 +15,9 @@ package todo.example.mediator
 
 	public class TodoListViewMediator extends Mediator
 	{
+		[Inject]
+		public var completeTodoSignal: CompleteTodoSignal;
+		
 		[Inject]
 		public var todoCollection: ITodoCollection;
 		
@@ -36,7 +43,17 @@ package todo.example.mediator
 		override public function initialize():void
 		{
 			view.createNewSignal.add(displayTodoFormView);
+			view.completeSignal.add(completeTodo);
 			todoCollection.changedSignal.add(setTodosOnView);
+		}
+		
+		/**
+		 * Dispatches the completeTodoSignal to trigger the
+		 * completion of a todo.
+		 */
+		private function completeTodo(todo: Todo): void
+		{
+			completeTodoSignal.dispatch(todo);
 		}
 		
 		/**

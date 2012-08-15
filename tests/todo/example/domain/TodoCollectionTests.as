@@ -79,5 +79,34 @@ package todo.example.domain
 			
 			todoCollection.add(newTodo);
 		}
+		
+		/**
+		 * Removes an existing todo item from the collection.
+		 */
+		[Test]
+		public function remove_ItemExists_ItemShouldBeRemovedFromCollection(): void
+		{
+			var existingTodo: Todo = new Todo();
+			var todoCollection: TodoCollection = new TodoCollection();
+			todoCollection.add(existingTodo);
+			todoCollection.remove(existingTodo);
+			
+			assertThat(todoCollection.source.indexOf(existingTodo), equalTo(-1));
+		}
+		
+		/**
+		 * Removing a todo item should dispatch the changedSignal.
+		 */
+		[Test(async)]
+		public function remove_DispatchesChangedSignal(): void
+		{
+			var existingTodo: Todo = new Todo();
+			var todoCollection: TodoCollection = new TodoCollection();
+			todoCollection.add(existingTodo);
+			
+			proceedOnSignal(this, todoCollection.changedSignal);
+			todoCollection.remove(existingTodo);
+		}
+		
 	}
 }

@@ -12,5 +12,6 @@ package todo.example.domain.api
 		
 		function add(todo: Todo): void;
 		function all(): ArrayCollection;
+		function remove(todo: Todo): void;
 	}
 }

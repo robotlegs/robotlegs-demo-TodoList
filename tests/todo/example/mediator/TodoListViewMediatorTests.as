@@ -17,6 +17,7 @@ package todo.example.mediator
 	
 	import todo.example.domain.Todo;
 	import todo.example.domain.api.ITodoCollection;
+	import todo.example.signal.CompleteTodoSignal;
 	import todo.example.ui.api.IPopup;
 	import todo.example.view.TodoFormView;
 	import todo.example.view.api.ITodoFormView;
@@ -25,6 +26,7 @@ package todo.example.mediator
 	[Mock(type="todo.example.domain.api.ITodoCollection")]
 	[Mock(type="todo.example.ui.api.IPopup")]
 	[Mock(type="todo.example.view.api.ITodoListView")]
+	[Mock(type="todo.example.signal.CompleteTodoSignal")]
 	[Mock(type="robotlegs.bender.extensions.localEventMap.api.IEventMap")]
 	public class TodoListViewMediatorTests extends MediatorTests
 	{
@@ -90,6 +92,21 @@ package todo.example.mediator
 		}
 		
 		/**
+		 * Tests that when the user wishes to complete a todo, the CompleteTodoSignal
+		 * is dispatched with the todo.
+		 */
+		[Test(async)]
+		public function todoComplete_ShouldDispatchCompleteTodoSignalWithTodo(): void
+		{
+			var expectedTodo: Todo = new Todo();
+			var todoListViewMediator: TodoListViewMediator = createMediator();
+			
+			simulateCompleteTodo(expectedTodo);
+			
+			verify(times(1)).that(todoListViewMediator.completeTodoSignal.dispatch(expectedTodo));
+		}
+		
+		/**
 		 * Simulates the todos collection being changed.
 		 */
 		private function changeTodosCollection(todoCollection: ITodoCollection): void
@@ -118,6 +135,7 @@ package todo.example.mediator
 			todoListViewMediator.popup = mock(IPopup);
 			todoListViewMediator.view = createMockOfTodoListView();
 			todoListViewMediator.todoCollection = mock(ITodoCollection);
+			todoListViewMediator.completeTodoSignal = mock(CompleteTodoSignal);
 			
 			setupMediator(todoListViewMediator);
 			
@@ -136,6 +154,7 @@ package todo.example.mediator
 		{
 			_todoListView = mock(ITodoListView);
 			given(_todoListView.createNewSignal).willReturn(new Signal());
+			given(_todoListView.completeSignal).willReturn(new Signal(Todo));
 			return _todoListView;
 		}
 		
@@ -148,6 +167,14 @@ package todo.example.mediator
 			given(todoCollection.changedSignal).willReturn(new Signal());
 			given(todoCollection.all()).willReturn(tasks);
 		}
+		
+		/**
+		 * Simulates the user wanting to complete a todo.
+		 */
+		private function simulateCompleteTodo(todo: Todo): void
+		{
+			(_todoListView.completeSignal as Signal).dispatch(todo);
+		}		
 		
 		/**
 		 * Simulates the user wanting to create a new

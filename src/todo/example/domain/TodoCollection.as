@@ -54,7 +54,7 @@ package todo.example.domain
 		public function add(todo: Todo): void
 		{
 			_source.push(todo);
-			_changedSignal.dispatch();
+			changed();
 		}
 		
 		/**
@@ -63,6 +63,25 @@ package todo.example.domain
 		public function all(): ArrayCollection
 		{
 			return VectorUtil.toArrayCollection(_source);
+		}
+		
+		/**
+		 * Dispatches the changedSignal to notify
+		 * listeners that the collection has changed.
+		 */
+		private function changed(): void	
+		{
+			_changedSignal.dispatch();
+		}
+		
+		/**
+		 * Removes the Todo value passed in the arguments
+		 * from the collection.
+		 */
+		public function remove(todo: Todo): void
+		{
+			_source.splice(_source.indexOf(todo), 1);
+			changed();
 		}
 	}
 }

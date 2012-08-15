@@ -1,6 +1,7 @@
 package todo.example
 {
 	import todo.example.bundle.AppBundleTests;
+	import todo.example.command.CompleteTodoCommandTests;
 	import todo.example.command.CreateNewTodoCommandTests;
 	import todo.example.config.AppConfigurationTests;
 	import todo.example.domain.TodoCollectionTests;
@@ -37,6 +38,7 @@ package todo.example
 		public var completeTodoSignalTests: CompleteTodoSignalTests;
 		public var createNewTodoSignalTests: CreateNewTodoSignalTests;
 	
+		public var completeTodoCommandTests: CompleteTodoCommandTests;
 		public var createNewTodoCommandTests: CreateNewTodoCommandTests;
 		
 		public var vectorUtilTests: VectorUtilTests;
