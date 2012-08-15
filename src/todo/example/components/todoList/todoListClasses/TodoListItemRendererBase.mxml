@@ -18,11 +18,11 @@
 	<mx:Text 	text="{data.task}"
 			  	width="150" />
 	
-	<!--
+
 	<s:Button	id="modifyButton"
 				buttonMode="true" mouseChildren="false" useHandCursor="true"
 				label="Modify"
-				includeIn="selected" />-->
+				includeIn="selected" />
 	
 	<s:Button	id="completeButton"
 				buttonMode="true" mouseChildren="false" useHandCursor="true"

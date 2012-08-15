@@ -23,6 +23,7 @@ package todo.example.components.todoList.todoListClasses
 		private function addListeners(): void
 		{
 			completeButton.addEventListener(MouseEvent.CLICK, complete);
+			modifyButton.addEventListener(MouseEvent.CLICK, modify);
 		}
 		
 		/**
@@ -36,6 +37,16 @@ package todo.example.components.todoList.todoListClasses
 		}
 		
 		/**
+		 * Handles the user wanting to modify a todo by
+		 * dispatching an event to notify the rest of
+		 * the application.
+		 */
+		private function modify(e: MouseEvent): void
+		{
+			dispatchEvent(new TodoListEvent(TodoListEvent.MODIFY, data as Todo));
+		}
+		
+		/**
 		 * Removes the click listeners from the modify
 		 * & complete buttons.
 		 */
@@ -43,6 +54,9 @@ package todo.example.components.todoList.todoListClasses
 		{
 			if (completeButton)
 				completeButton.removeEventListener(MouseEvent.CLICK, complete);
+			
+			if (modifyButton)
+				modifyButton.addEventListener(MouseEvent.CLICK, modify);
 		}
 	}
 }

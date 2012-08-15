@@ -7,6 +7,7 @@ package todo.example.components.todoList
 	import todo.example.components.todoList.todoListClasses.TodoListItemRenderer;
 
 	[Event(name="completeTodo", type="todo.example.components.todoList.todoListClasses.TodoListEvent")]
+	[Event(name="modifyTodo", type="todo.example.components.todoList.todoListClasses.TodoListEvent")]
 	public class TodoList extends List
 	{
 		public function TodoList()

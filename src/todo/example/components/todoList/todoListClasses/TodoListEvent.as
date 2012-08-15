@@ -7,6 +7,7 @@ package todo.example.components.todoList.todoListClasses
 	public class TodoListEvent extends Event
 	{
 		public static const COMPLETE: String = "completeTodo";
+		public static const MODIFY: String = "modifyTodo";
 		
 		private var _todo: Todo;
 		
