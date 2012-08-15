@@ -3,6 +3,7 @@ package todo.example.mediator
 	import mx.collections.ArrayCollection;
 	
 	import org.hamcrest.assertThat;
+	import org.hamcrest.object.equalTo;
 	import org.hamcrest.object.isTrue;
 	import org.mockito.impl.ReturningAnswer;
 	import org.mockito.impl.matchers.Matchers;
@@ -107,6 +108,33 @@ package todo.example.mediator
 		}
 		
 		/**
+		 * Tests that when the user wishes to the modify a todo, the
+		 * TodoFormView should be added as a popup.
+		 */
+		[Test]
+		public function modifyTodo_AddTodoFormViewAsPopup(): void
+		{
+			var todoListViewMediator: TodoListViewMediator = createMediator();
+			simulateModify(new Todo());
+			
+			verify(times(1)).that(todoListViewMediator.popup.add(anyOf(TodoFormView)));			
+		}
+		
+		/**
+		 * Tests that when the user wishes to modify a todo, that todo is
+		 * set as the activeTodo on the TodoCollection.
+		 */
+		[Test]
+		public function modifyTodo_SetsTodoAsActiveTodoOnTodoCollection(): void
+		{
+			var expectedTodo: Todo = new Todo();
+			var todoListViewMediator: TodoListViewMediator = createMediator();
+			simulateModify(expectedTodo);
+			
+			verify(times(1)).that(todoListViewMediator.todoCollection.activeTodo = expectedTodo);
+		}
+		
+		/**
 		 * Simulates the todos collection being changed.
 		 */
 		private function changeTodosCollection(todoCollection: ITodoCollection): void
@@ -155,6 +183,7 @@ package todo.example.mediator
 			_todoListView = mock(ITodoListView);
 			given(_todoListView.createNewSignal).willReturn(new Signal());
 			given(_todoListView.completeSignal).willReturn(new Signal(Todo));
+			given(_todoListView.modifySignal).willReturn(new Signal(Todo));
 			return _todoListView;
 		}
 		
@@ -183,6 +212,15 @@ package todo.example.mediator
 		private function simulateCreateNew(): void
 		{
 			(_todoListView.createNewSignal as Signal).dispatch();
+		}
+
+		/**
+		 * Simulates the user wanting to modifying a
+		 * todo item.
+		 */
+		private function simulateModify(todo: Todo): void
+		{
+			(_todoListView.modifySignal as Signal).dispatch(todo);
 		}
 	}
 }

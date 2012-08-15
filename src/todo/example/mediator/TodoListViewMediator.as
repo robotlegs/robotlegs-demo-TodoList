@@ -44,6 +44,7 @@ package todo.example.mediator
 		{
 			view.createNewSignal.add(displayTodoFormView);
 			view.completeSignal.add(completeTodo);
+			view.modifySignal.add(modifyTodo);
 			todoCollection.changedSignal.add(setTodosOnView);
 		}
 		
@@ -63,6 +64,17 @@ package todo.example.mediator
 		{
 			var todoFormView: TodoFormView = new TodoFormView();
 			popup.add(todoFormView);
+		}
+		
+		/**
+		 * Sets the Todo as the active todo item, so the application
+		 * knows which Todo item to modify. The TodoForm is shown
+		 * to the user to allow them to modify a todo.
+		 */
+		private function modifyTodo(todo: Todo): void
+		{
+			todoCollection.activeTodo = todo;
+			displayTodoFormView();
 		}
 		
 		/**

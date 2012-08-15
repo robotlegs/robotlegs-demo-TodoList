@@ -25,6 +25,22 @@ package todo.example.domain
 			return _changedSignal;
 		}
 		
+		private var _activeTodo: Todo;
+		
+		/**
+		 * Todo that is currently in focus, most likely
+		 * being modified by the user.
+		 */
+		public function get activeTodo(): Todo
+		{
+			return _activeTodo;
+		}
+		
+		public function set activeTodo(value: Todo): void
+		{
+			_activeTodo = value;
+		}
+		
 		/**
 		 * Returns the number of todos in the
 		 * collection.

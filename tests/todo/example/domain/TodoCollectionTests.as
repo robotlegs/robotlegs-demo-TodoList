@@ -4,6 +4,7 @@ package todo.example.domain
 	import org.hamcrest.number.greaterThan;
 	import org.hamcrest.object.equalTo;
 	import org.hamcrest.object.notNullValue;
+	import org.hamcrest.object.nullValue;
 	import org.osflash.signals.utils.proceedOnSignal;
 
 	public class TodoCollectionTests
@@ -34,6 +35,15 @@ package todo.example.domain
 		public function default_changedShouldNotBeNull(): void
 		{
 			assertThat(new TodoCollection().changedSignal, notNullValue());
+		}
+		
+		/**
+		 * Tests that by default the activeTodo is null.
+		 */
+		[Test]
+		public function default_activeTodoIsNull(): void
+		{
+			assertThat(new TodoCollection().activeTodo, nullValue());
 		}
 		
 		/**
