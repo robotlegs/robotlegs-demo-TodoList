@@ -22,10 +22,10 @@
 	<s:Button	id="modifyButton"
 				buttonMode="true" mouseChildren="false" useHandCursor="true"
 				label="Modify"
-				includeIn="selected" />
+				includeIn="selected" />-->
 	
 	<s:Button	id="completeButton"
 				buttonMode="true" mouseChildren="false" useHandCursor="true"
 				label="Complete"
-				includeIn="selected" />-->
+				includeIn="selected" />
 </s:ItemRenderer>
