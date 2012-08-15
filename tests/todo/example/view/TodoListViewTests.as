@@ -12,8 +12,11 @@ package todo.example.view
 	import org.hamcrest.object.notNullValue;
 	import org.osflash.signals.ISignal;
 	import org.osflash.signals.Signal;
+	import org.osflash.signals.utils.SignalAsyncEvent;
+	import org.osflash.signals.utils.handleSignal;
 	import org.osflash.signals.utils.proceedOnSignal;
 	
+	import todo.example.components.todoList.todoListClasses.TodoListEvent;
 	import todo.example.domain.Todo;
 	import todo.example.view.api.ITodoListView;
 
@@ -54,6 +57,15 @@ package todo.example.view
 		}
 		
 		/**
+		 * By default the completeSignal shouldn't be null.
+		 */
+		[Test]
+		public function default_completeSignalIsNotNull(): void
+		{
+			assertThat(createView().completeSignal, notNullValue());
+		}
+		
+		/**
 		 * Tests that when the createNewButton is clicked then the createNewSignal
 		 * should be dispatched.
 		 */
@@ -77,6 +89,20 @@ package todo.example.view
 			todoListView.dispose();
 			
 			assertThat(todoListView.createNewSignal.numListeners, equalTo(0));
+		}
+		
+		/**
+		 * Disposing of the view should remove all the listeners on the 
+		 * completeSignal.
+		 */
+		[Test]
+		public function dispose_RemovesListenersToCompleteSignal(): void
+		{
+			var todoListView: TodoListView = createView();
+			todoListView.completeSignal.add(dummyMethod);
+			todoListView.dispose();
+			
+			assertThat(todoListView.completeSignal.numListeners, equalTo(0));
 		}	
 		
 		/**
@@ -141,6 +167,27 @@ package todo.example.view
 		}
 		
 		/**
+		 * When the user wishes a todo to be completed, the completeSignal should
+		 * dispatch containing the todo in question.
+		 */
+		[Test(async)]
+		public function completeTodo_DispatchesCompleteSignalWithTodo(): void
+		{
+			var expectedTodo: Todo = new Todo();
+			var todoListView: TodoListView = createView();
+			handleSignal(this, todoListView.completeSignal, verifyTodo, 500, expectedTodo);
+			simulateComplete(todoListView, expectedTodo);
+		}
+		
+		/**
+		 * Simulates the user trigger the completion of a todo.
+		 */
+		private function simulateComplete(todoListView: TodoListView, todo: Todo): void
+		{
+			todoListView.todoList.dispatchEvent(new TodoListEvent(TodoListEvent.COMPLETE, todo));
+		}
+		
+		/**
 		 * Creates the test subject.
 		 */
 		private function createView(): TodoListView
@@ -148,6 +195,15 @@ package todo.example.view
 			var todoListView: TodoListView = new TodoListView();
 			addToUI(todoListView);
 			return todoListView;
+		}
+		
+		/**
+		 * Verifies that the expected todo has been included as an argument
+		 * in a signal dispatch.
+		 */
+		private function verifyTodo(e: SignalAsyncEvent, todo: Todo): void
+		{
+			assertThat(e.args[0], equalTo(todo));
 		}
 	}
 }

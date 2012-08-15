@@ -7,6 +7,7 @@ package todo.example.view.api
 	public interface ITodoListView extends IView
 	{
 		function get createNewSignal(): ISignal;
+		function get completeSignal(): ISignal;
 		
 		function setTodos(todos: ArrayCollection): void;
 	}
