@@ -78,6 +78,19 @@ package todo.example.mediator
 		}
 		
 		/**
+		 * Tests that when the saveSignal on the view is dispatched the view
+		 * is removed as a popup in the UI.
+		 */
+		[Test]
+		public function saveSignalDispatched_viewIsRemovedAsPopup(): void
+		{
+			var todoFormViewMediator: TodoFormViewMediator = createMediator();
+			simulateSave( "My dummy task.");
+			
+			verify(times(1)).that(todoFormViewMediator.popup.remove(_todoFormView));
+		}
+		
+		/**
 		 * Creates the test subject with its dependencies.
 		 */
 		private function createMediator(): TodoFormViewMediator

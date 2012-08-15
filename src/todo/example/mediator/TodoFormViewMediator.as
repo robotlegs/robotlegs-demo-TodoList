@@ -41,6 +41,14 @@ package todo.example.mediator
 		 */
 		private function cancel(): void
 		{
+			remove();
+		}
+		
+		/**
+		 * Removes the form from the view.
+		 */
+		private function remove(): void
+		{
 			popup.remove(view);
 		}
 		
@@ -51,6 +59,7 @@ package todo.example.mediator
 		private function save(): void
 		{
 			createNewTodoSignal.dispatch(view.taskDescription);
+			remove();
 		}
 	}
 }
