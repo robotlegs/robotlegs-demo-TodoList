@@ -78,7 +78,7 @@ package todo.example.mediator
 		[Test]
 		public function todosChange_ShouldSetTasksOnView(): void
 		{
-			var expectedTodos: Vector.<Todo> = createFakeTodos();
+			var expectedTodos: ArrayCollection = createFakeTodos();
 			var todoListViewMediator: TodoListViewMediator = createMediator(false);
 			
 			setupTodosCollection(todoListViewMediator.todoCollection, expectedTodos);
@@ -86,10 +86,7 @@ package todo.example.mediator
 			
 			changeTodosCollection(todoListViewMediator.todoCollection);
 			
-			// this needs to be refactored so the verification is that
-			// the item returned by the all() method on TodoCollection
-			// is passed to setTasks instead of any().
-			verify(times(1)).that(_todoListView.setTasks(any()));
+			verify(times(1)).that(_todoListView.setTasks(expectedTodos));
 		}
 		
 		/**
@@ -103,12 +100,12 @@ package todo.example.mediator
 		/**
 		 * Creates a collection of fake todos.
 		 */
-		private function createFakeTodos(): Vector.<Todo>
+		private function createFakeTodos(): ArrayCollection
 		{
-			var todos: Vector.<Todo> = new Vector.<Todo>();
-			todos.push(new Todo());
-			todos.push(new Todo());
-			todos.push(new Todo());
+			var todos: ArrayCollection = new ArrayCollection();
+			todos.addItem(new Todo());
+			todos.addItem(new Todo());
+			todos.addItem(new Todo());
 			return todos;
 		}
 		
@@ -125,7 +122,7 @@ package todo.example.mediator
 			setupMediator(todoListViewMediator);
 			
 			if (initialize) {
-				setupTodosCollection(todoListViewMediator.todoCollection, new Vector.<Todo>());
+				setupTodosCollection(todoListViewMediator.todoCollection, new ArrayCollection());
 				todoListViewMediator.initialize();
 			}
 			
@@ -146,7 +143,7 @@ package todo.example.mediator
 		 * Sets up the TodoCollection so it returns the tasks argument when
 		 * the all() method is accessed, and also so it has a changedSignal.
 		 */
-		private function setupTodosCollection(todoCollection: ITodoCollection, tasks: Vector.<Todo>): void
+		private function setupTodosCollection(todoCollection: ITodoCollection, tasks: ArrayCollection): void
 		{
 			given(todoCollection.changedSignal).willReturn(new Signal());
 			given(todoCollection.all()).willReturn(tasks);

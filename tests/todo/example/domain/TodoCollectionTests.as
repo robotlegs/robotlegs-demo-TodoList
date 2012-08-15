@@ -63,7 +63,7 @@ package todo.example.domain
 			
 			todoCollection.add(newTodo);
 			
-			assertThat(todoCollection.all().indexOf(newTodo), greaterThan(-1));
+			assertThat(todoCollection.source.indexOf(newTodo), greaterThan(-1));
 		}
 		
 		/**

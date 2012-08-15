@@ -2,10 +2,13 @@ package todo.example.domain
 {
 	import flash.geom.Vector3D;
 	
+	import mx.collections.ArrayCollection;
+	
 	import org.osflash.signals.ISignal;
 	import org.osflash.signals.Signal;
 	
 	import todo.example.domain.api.ITodoCollection;
+	import todo.example.util.VectorUtil;
 
 	public class TodoCollection implements ITodoCollection
 	{
@@ -31,6 +34,15 @@ package todo.example.domain
 			return _source.length;
 		}
 		
+		/**
+		 * Source of the collection that holds all the
+		 * Todos.
+		 */
+		public function get source(): Vector.<Todo>
+		{
+			return _source;
+		}
+		
 		public function TodoCollection()
 		{
 			_source = new Vector.<Todo>();	
@@ -46,12 +58,11 @@ package todo.example.domain
 		}
 		
 		/**
-		 * Returns all the todo items so that we
-		 * can loop over the items.
+		 * Returns all the todo items in an ArrayCollection.
 		 */
-		public function all(): Vector.<Todo>
+		public function all(): ArrayCollection
 		{
-			return _source;
+			return VectorUtil.toArrayCollection(_source);
 		}
 	}
 }
