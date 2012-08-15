@@ -15,17 +15,16 @@
 		<s:State name="selected" />
 	</s:states>
 	
-	<mx:Text 	text="{data.task}"
+	<mx:Text 	id="taskLabel"
 			  	width="150" />
 	
-
 	<s:Button	id="modifyButton"
 				buttonMode="true" mouseChildren="false" useHandCursor="true"
 				label="Modify"
-				includeIn="selected" />
+				includeIn="selected, hovered" />
 	
 	<s:Button	id="completeButton"
 				buttonMode="true" mouseChildren="false" useHandCursor="true"
 				label="Complete"
-				includeIn="selected" />
+				includeIn="selected, hovered" />
 </s:ItemRenderer>
