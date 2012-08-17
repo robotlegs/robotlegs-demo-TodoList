@@ -6,14 +6,6 @@ package todo.example.components.todoList.todoListClasses
 
 	public class TodoListItemRenderer extends TodoListItemRendererBase
 	{
-		override public function set data(value:Object):void
-		{
-			super.data = value;
-			
-			if (taskLabel)
-				taskLabel.text = (data as Todo).task;
-		}
-		
 		public function TodoListItemRenderer()
 		{
 			super();

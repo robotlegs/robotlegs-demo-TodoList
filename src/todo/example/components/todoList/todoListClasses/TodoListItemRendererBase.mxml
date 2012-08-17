@@ -16,6 +16,7 @@
 	</s:states>
 	
 	<mx:Text 	id="taskLabel"
+				text="{data.task}"
 			  	width="150" />
 	
 	<s:Button	id="modifyButton"

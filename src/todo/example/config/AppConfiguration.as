@@ -8,6 +8,7 @@ package todo.example.config
 	
 	import todo.example.command.CompleteTodoCommand;
 	import todo.example.command.CreateNewTodoCommand;
+	import todo.example.command.UpdateTodoCommand;
 	import todo.example.domain.TodoCollection;
 	import todo.example.domain.api.ITodoCollection;
 	import todo.example.mediator.MainViewMediator;
@@ -15,6 +16,7 @@ package todo.example.config
 	import todo.example.mediator.TodoListViewMediator;
 	import todo.example.signal.CompleteTodoSignal;
 	import todo.example.signal.CreateNewTodoSignal;
+	import todo.example.signal.UpdateTodoSignal;
 	import todo.example.ui.Popup;
 	import todo.example.ui.api.IPopup;
 	import todo.example.view.api.IMainView;
@@ -67,6 +69,7 @@ package todo.example.config
 		{
 			signalCommandMap.map(CreateNewTodoSignal).toCommand(CreateNewTodoCommand);
 			signalCommandMap.map(CompleteTodoSignal).toCommand(CompleteTodoCommand);
+			signalCommandMap.map(UpdateTodoSignal).toCommand(UpdateTodoCommand);
 		}
 	}
 }

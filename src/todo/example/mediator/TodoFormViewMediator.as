@@ -6,6 +6,7 @@ package todo.example.mediator
 	
 	import todo.example.domain.api.ITodoCollection;
 	import todo.example.signal.CreateNewTodoSignal;
+	import todo.example.signal.UpdateTodoSignal;
 	import todo.example.ui.api.IPopup;
 	import todo.example.view.api.ITodoFormView;
 	
@@ -13,6 +14,9 @@ package todo.example.mediator
 	{
 		[Inject]
 		public var createNewTodoSignal: CreateNewTodoSignal;
+		
+		[Inject]
+		public var updateTodoSignal: UpdateTodoSignal;
 		
 		[Inject]
 		public var todoCollection: ITodoCollection;
@@ -64,7 +68,11 @@ package todo.example.mediator
 		 */
 		private function save(): void
 		{
-			createNewTodoSignal.dispatch(view.taskDescription);
+			if (todoCollection.activeTodo != null)
+				updateTodoSignal.dispatch(view.taskDescription); 
+			else
+				createNewTodoSignal.dispatch(view.taskDescription);
+				
 			remove();
 		}
 		

@@ -2,6 +2,7 @@ package todo.example.domain
 {
 	import mx.utils.UIDUtil;
 
+	[Bindable]
 	public class Todo
 	{
 		public var id: String;

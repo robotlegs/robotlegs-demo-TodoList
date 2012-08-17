@@ -3,6 +3,7 @@ package todo.example
 	import todo.example.bundle.AppBundleTests;
 	import todo.example.command.CompleteTodoCommandTests;
 	import todo.example.command.CreateNewTodoCommandTests;
+	import todo.example.command.UpdateTodoCommandTests;
 	import todo.example.config.AppConfigurationTests;
 	import todo.example.domain.TodoCollectionTests;
 	import todo.example.domain.TodoTests;
@@ -10,6 +11,7 @@ package todo.example
 	import todo.example.mediator.TodoListViewMediatorTests;
 	import todo.example.signal.CompleteTodoSignalTests;
 	import todo.example.signal.CreateNewTodoSignalTests;
+	import todo.example.signal.UpdateTodoSignalTests;
 	import todo.example.ui.PopupTests;
 	import todo.example.util.VectorUtilTests;
 	import todo.example.view.MainViewTests;
@@ -37,9 +39,11 @@ package todo.example
 	
 		public var completeTodoSignalTests: CompleteTodoSignalTests;
 		public var createNewTodoSignalTests: CreateNewTodoSignalTests;
+		public var updateTodoSignalTests: UpdateTodoSignalTests;
 	
 		public var completeTodoCommandTests: CompleteTodoCommandTests;
 		public var createNewTodoCommandTests: CreateNewTodoCommandTests;
+		public var updateTodoCommandTests: UpdateTodoCommandTests;
 		
 		public var vectorUtilTests: VectorUtilTests;
 	}

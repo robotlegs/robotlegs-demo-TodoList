@@ -2,9 +2,11 @@ package todo.example.mediator
 {
 	import org.hamcrest.assertThat;
 	import org.hamcrest.object.isTrue;
+	import org.mockito.integrations.any;
 	import org.mockito.integrations.flexunit4.MockitoRule;
 	import org.mockito.integrations.given;
 	import org.mockito.integrations.mock;
+	import org.mockito.integrations.never;
 	import org.mockito.integrations.times;
 	import org.mockito.integrations.verify;
 	import org.osflash.signals.Signal;
@@ -13,12 +15,14 @@ package todo.example.mediator
 	import todo.example.domain.Todo;
 	import todo.example.domain.api.ITodoCollection;
 	import todo.example.signal.CreateNewTodoSignal;
+	import todo.example.signal.UpdateTodoSignal;
 	import todo.example.ui.api.IPopup;
 	import todo.example.view.api.ITodoFormView;
 
 	[Mock(type="todo.example.ui.api.IPopup")]
 	[Mock(type="todo.example.view.api.ITodoFormView")]
 	[Mock(type="todo.example.signal.CreateNewTodoSignal")]
+	[Mock(type="todo.example.signal.UpdateTodoSignal")]
 	[Mock(type="robotlegs.bender.extensions.localEventMap.api.IEventMap")]
 	[Mock(type="todo.example.domain.api.ITodoCollection")]
 	public class TodoFormViewMediatorTests extends MediatorTests
@@ -70,7 +74,7 @@ package todo.example.mediator
 		 * is dispatched.
 		 */
 		[Test]
-		public function saveSignalDispatched_ShouldDispatchCreateNewTodoSignal(): void
+		public function saveSignalDispatched_TodoCollectionHasNoActive_ShouldDispatchCreateNewTodoSignal(): void
 		{
 			const expectedTaskDescription: String = "My dummy task.";
 			
@@ -78,6 +82,7 @@ package todo.example.mediator
 			simulateSave(expectedTaskDescription);
 			
 			verify(times(1)).that(todoFormViewMediator.createNewTodoSignal.dispatch(expectedTaskDescription));
+			verify(never()).that(todoFormViewMediator.updateTodoSignal.dispatch(expectedTaskDescription));
 		}
 		
 		/**
@@ -111,6 +116,22 @@ package todo.example.mediator
 		}
 		
 		/**
+		 * Tests that when the user wishes to save and the TodoCollection has an active Todo, the UpdateTodoSignal
+		 * is dispatched.
+		 */
+		[Test]
+		public function saveSignalDispatched_TodoCollectionHasActive_ShouldDispatchUpdateTodoSignal(): void
+		{
+			const expectedTaskDescription: String = "My dummy task.";
+			
+			var todoFormViewMediator: TodoFormViewMediator = createMediator(new Todo());
+			simulateSave(expectedTaskDescription);
+			
+			verify(times(1)).that(todoFormViewMediator.updateTodoSignal.dispatch(expectedTaskDescription));
+			verify(never()).that(todoFormViewMediator.createNewTodoSignal.dispatch(expectedTaskDescription));
+		}
+		
+		/**
 		 * Creates the test subject with its dependencies.
 		 */
 		private function createMediator(activeTodo: Todo = null): TodoFormViewMediator
@@ -119,7 +140,7 @@ package todo.example.mediator
 			todoFormViewMediator.popup = mock(IPopup);
 			todoFormViewMediator.view = createMockOfTodoFormView();
 			todoFormViewMediator.createNewTodoSignal = mock(CreateNewTodoSignal);
-			
+			todoFormViewMediator.updateTodoSignal = mock(UpdateTodoSignal);
 			todoFormViewMediator.todoCollection = mock(ITodoCollection);
 			given(todoFormViewMediator.todoCollection.activeTodo).willReturn(activeTodo);
 			
