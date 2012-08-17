@@ -13,7 +13,7 @@ package todo.example.config
 		[Test]
 		public function implements_expectedInterface(): void
 		{
-			assertThat(new AppConfiguration() as IConfig, notNullValue());
+			assertThat(new AppConfig() as IConfig, notNullValue());
 		}
 	}
 }

@@ -11,7 +11,7 @@ package todo.example
 	import spark.components.Application;
 	
 	import todo.example.bundle.AppBundle;
-	import todo.example.config.AppConfiguration;
+	import todo.example.config.AppConfig;
 	
 	public class TodoExampleApplication extends Application
 	{
@@ -39,7 +39,7 @@ package todo.example
 		{
 			context = new Context()
 				.extend(AppBundle)
-				.configure(AppConfiguration, this);
+				.configure(AppConfig, this);
 			
 			setLogLevel();
 		}

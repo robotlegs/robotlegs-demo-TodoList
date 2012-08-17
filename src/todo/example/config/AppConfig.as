@@ -22,7 +22,7 @@ package todo.example.config
 	import todo.example.view.api.ITodoFormView;
 	import todo.example.view.api.ITodoListView;
 
-	public class AppConfiguration implements IConfig
+	public class AppConfig implements IConfig
 	{
 		[Inject]
 		public var injector: Injector;
