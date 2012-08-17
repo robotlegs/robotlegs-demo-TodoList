@@ -11,7 +11,6 @@ package todo.example.config
 	import todo.example.command.UpdateTodoCommand;
 	import todo.example.domain.TodoCollection;
 	import todo.example.domain.api.ITodoCollection;
-	import todo.example.mediator.MainViewMediator;
 	import todo.example.mediator.TodoFormViewMediator;
 	import todo.example.mediator.TodoListViewMediator;
 	import todo.example.signal.CompleteTodoSignal;
@@ -57,7 +56,6 @@ package todo.example.config
 		 */
 		private function mediators(): void
 		{
-			mediatorMap.map(IMainView).toMediator(MainViewMediator);
 			mediatorMap.map(ITodoFormView).toMediator(TodoFormViewMediator);
 			mediatorMap.map(ITodoListView).toMediator(TodoListViewMediator);
 		}
