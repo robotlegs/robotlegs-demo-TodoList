@@ -33,6 +33,15 @@ package todo.example.config
 		[Inject]
 		public var signalCommandMap: ISignalCommandMap;
 		
+		// Wanted to use dependency injection via the constructor instead of the
+		// properties above, however I found that when doing this the injector & mediatorMap
+		// would be null. This could potentially be a bug with SwiftSuspenders or the RL 
+		// framework or the setup of the custom AppBundle & Context is incorrect.
+		public function AppConfig()
+		{
+			
+		}
+		
 		public function configure(): void
 		{
 			dependencies();
