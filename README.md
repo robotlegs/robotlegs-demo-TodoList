@@ -1,6 +1,6 @@
 # Todo Example
 
-Very simple example of a todo list application written using Apache Flex 4.8 and the latest version of Robotlegs.
+Very simple example of a todo list application developed using Apache Flex 4.8 and the latest version of Robotlegs.
 
 ## Frameworks & Libraries
 
@@ -28,7 +28,7 @@ The project is covered with tests wherever possible. In order to run the tests y
 
 	ant test
 
-This will compile the code and execute the test runner. It also outputs a JUnit report to a deploy folder.
+This will compile the code and execute the test runner. It also outputs a JUnit report to a deploy folder. Should be noted that you may need to change the path to your Flex SDK, which can be done by changing the *FLEX_HOME* property in the [build/build.properties](https://github.com/peterkeating/todolist-example/blob/master/build/build.properties).
 
 ## Feedback or Questions
 
