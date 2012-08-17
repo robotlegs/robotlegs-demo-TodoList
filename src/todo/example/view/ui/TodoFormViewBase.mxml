@@ -26,6 +26,7 @@
 					  label="Cancel" />
 			
 			<s:Button id="saveButton"
+					  enabled="false"
 					  label="Save" />
 		</s:Group>
 	</s:Group>

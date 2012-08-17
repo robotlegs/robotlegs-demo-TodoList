@@ -2,6 +2,8 @@ package todo.example.view
 {
 	import org.hamcrest.assertThat;
 	import org.hamcrest.object.equalTo;
+	import org.hamcrest.object.isFalse;
+	import org.hamcrest.object.isTrue;
 	import org.hamcrest.object.notNullValue;
 	import org.osflash.signals.utils.proceedOnSignal;
 	
@@ -40,6 +42,15 @@ package todo.example.view
 		public function default_saveSignalIsNotNull(): void
 		{
 			assertThat(createView().saveSignal, notNullValue());
+		}
+		
+		/**
+		 * By default the saveButton should not be enabled.
+		 */
+		[Test]
+		public function default_saveButtonShouldBeDisabled(): void
+		{
+			assertThat(createView().saveButton.enabled, isFalse());
 		}
 		
 		/**
@@ -96,14 +107,65 @@ package todo.example.view
 		}
 		
 		/**
+		 * When the user enters a task description, the saveButton should become enabled.
+		 */
+		[Test]
+		public function enteringTaskDescription_WithText_EnablesSaveButton(): void
+		{
+			const expectedValue: String = "My dummy task.";
+			var todoFormView: TodoFormView = createView();
+			updateText(todoFormView.taskDescriptionTextArea, expectedValue);
+			assertThat(todoFormView.saveButton.enabled, isTrue());		
+		}
+		
+		/**
+		 * Setting the taskDescription with a value that isn't an empty string, should
+		 * enabled the save button.
+		 */
+		[Test]
+		public function taskDescription_SetNonEmptyValue_EnablesSaveButton(): void
+		{
+			const nonEmptyValue: String = "My dummy task.";
+			var todoFormView: TodoFormView = createView();
+			todoFormView.taskDescription = nonEmptyValue;
+			assertThat(todoFormView.saveButton.enabled, isTrue());		
+		}
+		
+		/**
+		 * Setting the taskDescription with a value that is an empty string, should
+		 * disable the save button.
+		 */
+		[Test]
+		public function taskDescription_SetEmptyValue_EnablesSaveButton(): void
+		{
+			const emptyValue: String = " ";
+			var todoFormView: TodoFormView = createView();
+			todoFormView.taskDescription = emptyValue;
+			assertThat(todoFormView.saveButton.enabled, isFalse());		
+		}
+		
+		/**
+		 * Setting the taskDescription with a value that is anull , should
+		 * disable the save button.
+		 */
+		[Test]
+		public function taskDescription_SetNullValue_EnablesSaveButton(): void
+		{
+			var todoFormView: TodoFormView = createView();
+			todoFormView.taskDescription = null;
+			assertThat(todoFormView.saveButton.enabled, isFalse());		
+		}
+		
+		/**
 		 * When the user clicks the saveButton the saveSignal should be
 		 * dispatched to notify the application that the user wishes
 		 * to save a task.
 		 */
 		[Test(async)]
-		public function clickSaveButton_DispatchesTheSaveSignal(): void
+		public function clickSaveButton_WhenEnteredTaskDescription_DispatchesTheSaveSignal(): void
 		{
 			var todoFormView: TodoFormView = createView();
+			todoFormView.taskDescription = "My dummy task";
 			proceedOnSignal(this, todoFormView.saveSignal);
 			click(todoFormView.saveButton);
 		}

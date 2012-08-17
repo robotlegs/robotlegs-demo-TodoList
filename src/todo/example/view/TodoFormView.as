@@ -1,6 +1,9 @@
 package todo.example.view
 {
+	import flash.events.Event;
 	import flash.events.MouseEvent;
+	
+	import mx.utils.StringUtil;
 	
 	import org.osflash.signals.ISignal;
 	import org.osflash.signals.Signal;
@@ -43,6 +46,7 @@ package todo.example.view
 		public function set taskDescription(value: String): void
 		{
 			taskDescriptionTextArea.text = value;
+			validate();
 		}
 		
 		override protected function childrenCreated():void
@@ -51,6 +55,7 @@ package todo.example.view
 			
 			cancelButton.addEventListener(MouseEvent.CLICK, cancel);
 			saveButton.addEventListener(MouseEvent.CLICK, save);
+			taskDescriptionTextArea.addEventListener(Event.CHANGE, validate);
 		}
 		
 		/**
@@ -65,7 +70,10 @@ package todo.example.view
 		public function dispose():void
 		{
 			_cancelSignal.removeAll();
+			
 			cancelButton.removeEventListener(MouseEvent.CLICK, cancel);
+			saveButton.removeEventListener(MouseEvent.CLICK, save);
+			taskDescriptionTextArea.removeEventListener(Event.CHANGE, validate);
 		}
 		
 		/**
@@ -77,6 +85,15 @@ package todo.example.view
 		private function save(e: MouseEvent): void
 		{
 			saveSignal.dispatch();
+		}
+		
+		/**
+		 * Validates the task description, if it is deemed valid,
+		 * then the save button is enabled, otherwise it is disabled.
+		 */
+		private function validate(e: Event = null): void
+		{
+			saveButton.enabled = (taskDescription != null && StringUtil.trim(taskDescription) != "");
 		}
 	}
 }
