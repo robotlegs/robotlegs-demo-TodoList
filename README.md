@@ -13,6 +13,7 @@ Below is a list of frameworks & libraries used for the project.
 * [Hamcrest 1.1.3](https://github.com/drewbourne/hamcrest-as3)
 * [AS3 Signals 0.9 BETA](https://github.com/robertpenner/as3-signals/) *(built using the Apache Flex 4.8 SDK.)*
 * [AS3 Signals Utilities 0.9 BETA](https://github.com/eidiot/as3-signals-utilities-async) *(built using the Apache Flex 4.8 SDK.)*
+* [SignalCommandMap Robotlegs Extension](https://github.com/pixels4nickels/robotlegs-extensions-SignalCommandMap) *(built using the latest source code from 7th August 2012)*
 
 ## Specification
 
@@ -32,4 +33,4 @@ This will compile the code and execute the test runner. It also outputs a JUnit 
 
 ## Feedback or Questions
 
-This code is not perfect, and I'm sure you would do things different and I would love to know what changes you'd make or what you would do differently. Send me an email as [peter@moov2.com](mailto:peter@moov2.com) or a tweet to [@peterkeating](http://twitter.com/peterkeating).
+This code is not perfect, and I'm sure you would do things different and I would love to know what changes you'd make or what you would do differently. Send me an email at [peter@moov2.com](mailto:peter@moov2.com) or a tweet to [@peterkeating](http://twitter.com/peterkeating).
