@@ -3,6 +3,7 @@ package todo.example
 	import mx.events.FlexEvent;
 	
 	import robotlegs.bender.bundles.mvcs.MVCSBundle;
+	import robotlegs.bender.extensions.contextView.ContextView;
 	import robotlegs.bender.extensions.signalCommandMap.SignalCommandMapExtension;
 	import robotlegs.bender.framework.api.IContext;
 	import robotlegs.bender.framework.api.LogLevel;
@@ -39,7 +40,8 @@ package todo.example
 		{
 			context = new Context()
 				.extend(AppBundle)
-				.configure(AppConfig, this);
+				.configure(AppConfig)
+				.configure(new ContextView(this));
 			
 			setLogLevel();
 		}
