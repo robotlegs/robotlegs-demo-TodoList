@@ -39,7 +39,7 @@ package todo.example
 		private function preInitialize(e: FlexEvent): void
 		{
 			context = new Context()
-				.extend(AppBundle)
+				.install(AppBundle)
 				.configure(AppConfig)
 				.configure(new ContextView(this));
 			

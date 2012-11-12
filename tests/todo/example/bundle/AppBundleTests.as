@@ -37,7 +37,7 @@ package todo.example.bundle
 			var appBundle: AppBundle = new AppBundle();
 			appBundle.extend(mockContext);
 			
-			verify(times(1)).that(mockContext.extend(SignalCommandMapExtension));
+			verify(times(1)).that(mockContext.install(SignalCommandMapExtension));
 		}
 	}
 }

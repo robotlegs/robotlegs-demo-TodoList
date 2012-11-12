@@ -7,7 +7,7 @@ Very simple example of a todo list application developed using Apache Flex 4.8 a
 Below is a list of frameworks & libraries used for the project.
 
 * [Apache Flex 4.8](http://incubator.apache.org/flex/)
-* [Robotlegs 2](https://github.com/robotlegs/robotlegs-framework/) *(built using the latest source code from [7th November 2012](https://github.com/robotlegs/robotlegs-framework/commit/9a0a5278fc5eea6bd5c703f539802e0ac80fe970))*
+* [Robotlegs 2](https://github.com/robotlegs/robotlegs-framework/) *(built using the latest source code from [11th November 2012](https://github.com/robotlegs/robotlegs-framework/commit/42c49f9f843354477e4a37f90d39a9bddd21bd2a))*
 * [FlexUnit 4.1.0.16076](https://github.com/flexunit/flexunit/)
 * [Mockito 1.4M5](https://bitbucket.org/loomis/mockito-flex/)
 * [Hamcrest 1.1.3](https://github.com/drewbourne/hamcrest-as3)

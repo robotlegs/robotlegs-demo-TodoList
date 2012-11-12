@@ -11,7 +11,7 @@ package todo.example.bundle
 		{
 			super.extend(context);
 			
-			context.extend(SignalCommandMapExtension);
+			context.install(SignalCommandMapExtension);
 		}
 	}
 }
