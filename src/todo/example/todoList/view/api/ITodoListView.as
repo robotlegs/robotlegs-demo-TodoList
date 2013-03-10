@@ -3,7 +3,7 @@ package todo.example.todoList.view.api
 	import mx.collections.ArrayCollection;
 	
 	import org.osflash.signals.ISignal;
-	import todo.example.view.api.IView;
+	import todo.example.core.view.IView;
 
 	public interface ITodoListView extends IView
 	{

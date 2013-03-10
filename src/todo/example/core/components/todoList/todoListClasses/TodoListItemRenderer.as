@@ -1,8 +1,8 @@
-package todo.example.components.todoList.todoListClasses
+package todo.example.core.components.todoList.todoListClasses
 {
 	import flash.events.MouseEvent;
 	
-	import todo.example.domain.Todo;
+	import todo.example.core.domain.Todo;
 
 	public class TodoListItemRenderer extends TodoListItemRendererBase
 	{

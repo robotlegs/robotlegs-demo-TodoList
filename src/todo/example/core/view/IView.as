@@ -1,4 +1,4 @@
-package todo.example.view.api
+package todo.example.core.view
 {
 	public interface IView
 	{

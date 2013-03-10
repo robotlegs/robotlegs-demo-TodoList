@@ -1,4 +1,4 @@
-package todo.example.util
+package todo.example.core.util
 {
 	import org.hamcrest.assertThat;
 	import org.hamcrest.collection.hasItems;

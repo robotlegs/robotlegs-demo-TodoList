@@ -2,7 +2,7 @@ package todo.example.todoForm.command
 {
 	import robotlegs.bender.bundles.mvcs.Command;
 	
-	import todo.example.domain.api.ITodoCollection;
+	import todo.example.core.domain.api.ITodoCollection;
 	
 	public class UpdateTodoCommand extends Command
 	{

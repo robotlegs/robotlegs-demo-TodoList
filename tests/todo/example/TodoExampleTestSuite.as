@@ -1,7 +1,7 @@
 package todo.example
 {
-	import todo.example.domain.TodoCollectionTests;
-	import todo.example.domain.TodoTests;
+	import todo.example.core.domain.TodoCollectionTests;
+	import todo.example.core.domain.TodoTests;
 	import todo.example.todoForm.TodoFormConfigTests;
 	import todo.example.todoForm.command.CreateNewTodoCommandTests;
 	import todo.example.todoForm.command.UpdateTodoCommandTests;
@@ -14,8 +14,8 @@ package todo.example
 	import todo.example.todoList.mediator.TodoListViewMediatorTests;
 	import todo.example.todoList.signal.CompleteTodoSignalTests;
 	import todo.example.todoList.view.TodoListViewTests;
-	import todo.example.ui.PopupTests;
-	import todo.example.util.VectorUtilTests;
+	import todo.example.core.ui.PopupTests;
+	import todo.example.core.util.VectorUtilTests;
 
 	[Suite]
 	[RunWith("org.flexunit.runners.Suite")]

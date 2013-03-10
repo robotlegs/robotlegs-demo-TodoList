@@ -4,10 +4,10 @@ package todo.example.todoForm.mediator
 	
 	import robotlegs.bender.bundles.mvcs.Mediator;
 	
-	import todo.example.domain.api.ITodoCollection;
+	import todo.example.core.domain.api.ITodoCollection;
 	import todo.example.todoForm.signal.CreateNewTodoSignal;
 	import todo.example.todoForm.signal.UpdateTodoSignal;
-	import todo.example.ui.api.IPopup;
+	import todo.example.core.ui.api.IPopup;
 	import todo.example.todoForm.view.api.ITodoFormView;
 	
 	public class TodoFormViewMediator extends Mediator

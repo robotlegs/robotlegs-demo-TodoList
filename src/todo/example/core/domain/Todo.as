@@ -1,4 +1,4 @@
-package todo.example.domain
+package todo.example.core.domain
 {
 	import mx.utils.UIDUtil;
 

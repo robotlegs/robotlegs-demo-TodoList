@@ -4,10 +4,10 @@ package todo.example
 	
 	import robotlegs.bender.framework.api.IConfig;
 	
-	import todo.example.domain.TodoCollection;
-	import todo.example.domain.api.ITodoCollection;
-	import todo.example.ui.Popup;
-	import todo.example.ui.api.IPopup;
+	import todo.example.core.domain.TodoCollection;
+	import todo.example.core.domain.api.ITodoCollection;
+	import todo.example.core.ui.Popup;
+	import todo.example.core.ui.api.IPopup;
 
 	public class AppConfig implements IConfig
 	{

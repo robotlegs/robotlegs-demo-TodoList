@@ -1,13 +1,13 @@
-package todo.example.components.todoList
+package todo.example.core.components.todoList
 {
 	import mx.core.ClassFactory;
 	
 	import spark.components.List;
 	
-	import todo.example.components.todoList.todoListClasses.TodoListItemRenderer;
+	import todo.example.core.components.todoList.todoListClasses.TodoListItemRenderer;
 
-	[Event(name="completeTodo", type="todo.example.components.todoList.todoListClasses.TodoListEvent")]
-	[Event(name="modifyTodo", type="todo.example.components.todoList.todoListClasses.TodoListEvent")]
+	[Event(name="completeTodo", type="todo.example.core.components.todoList.todoListClasses.TodoListEvent")]
+	[Event(name="modifyTodo", type="todo.example.core.components.todoList.todoListClasses.TodoListEvent")]
 	public class TodoList extends List
 	{
 		public function TodoList()

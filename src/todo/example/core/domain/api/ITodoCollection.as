@@ -1,10 +1,10 @@
-package todo.example.domain.api
+package todo.example.core.domain.api
 {
 	import mx.collections.ArrayCollection;
 	
 	import org.osflash.signals.ISignal;
 	
-	import todo.example.domain.Todo;
+	import todo.example.core.domain.Todo;
 
 	public interface ITodoCollection
 	{

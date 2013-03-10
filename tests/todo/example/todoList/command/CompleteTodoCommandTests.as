@@ -5,10 +5,10 @@ package todo.example.todoList.command
 	import org.mockito.integrations.times;
 	import org.mockito.integrations.verify;
 	
-	import todo.example.domain.Todo;
-	import todo.example.domain.api.ITodoCollection;
+	import todo.example.core.domain.Todo;
+	import todo.example.core.domain.api.ITodoCollection;
 
-	[Mock(type="todo.example.domain.api.ITodoCollection")]
+	[Mock(type="todo.example.core.domain.api.ITodoCollection")]
 	public class CompleteTodoCommandTests
 	{
 		[Rule]

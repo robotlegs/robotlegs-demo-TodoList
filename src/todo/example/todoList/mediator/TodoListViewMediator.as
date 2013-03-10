@@ -4,13 +4,13 @@ package todo.example.todoList.mediator
 	
 	import robotlegs.bender.bundles.mvcs.Mediator;
 	
-	import todo.example.domain.Todo;
-	import todo.example.domain.TodoCollection;
-	import todo.example.domain.api.ITodoCollection;
+	import todo.example.core.domain.Todo;
+	import todo.example.core.domain.TodoCollection;
+	import todo.example.core.domain.api.ITodoCollection;
 	import todo.example.todoList.signal.CompleteTodoSignal;
 	import todo.example.todoList.view.api.ITodoListView;
-	import todo.example.ui.api.IPopup;
-	import todo.example.util.VectorUtil;
+	import todo.example.core.ui.api.IPopup;
+	import todo.example.core.util.VectorUtil;
 	import todo.example.todoForm.view.TodoFormView;
 
 	public class TodoListViewMediator extends Mediator

@@ -1,4 +1,4 @@
-package todo.example.domain
+package todo.example.core.domain
 {
 	import org.hamcrest.assertThat;
 	import org.hamcrest.number.greaterThan;

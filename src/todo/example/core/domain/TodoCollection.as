@@ -1,4 +1,4 @@
-package todo.example.domain
+package todo.example.core.domain
 {
 	import flash.geom.Vector3D;
 	
@@ -7,8 +7,8 @@ package todo.example.domain
 	import org.osflash.signals.ISignal;
 	import org.osflash.signals.Signal;
 	
-	import todo.example.domain.api.ITodoCollection;
-	import todo.example.util.VectorUtil;
+	import todo.example.core.domain.api.ITodoCollection;
+	import todo.example.core.util.VectorUtil;
 
 	public class TodoCollection implements ITodoCollection
 	{

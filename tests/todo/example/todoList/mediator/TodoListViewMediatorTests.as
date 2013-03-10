@@ -16,17 +16,17 @@ package todo.example.todoList.mediator
 	import org.mockito.integrations.verify;
 	import org.osflash.signals.Signal;
 	
-	import todo.example.domain.Todo;
-	import todo.example.domain.api.ITodoCollection;
+	import todo.example.core.domain.Todo;
+	import todo.example.core.domain.api.ITodoCollection;
 	import todo.example.testing.MediatorTests;
 	import todo.example.todoList.signal.CompleteTodoSignal;
 	import todo.example.todoList.view.api.ITodoListView;
-	import todo.example.ui.api.IPopup;
+	import todo.example.core.ui.api.IPopup;
 	import todo.example.todoForm.view.TodoFormView;
 	import todo.example.todoForm.view.api.ITodoFormView;
 
-	[Mock(type="todo.example.domain.api.ITodoCollection")]
-	[Mock(type="todo.example.ui.api.IPopup")]
+	[Mock(type="todo.example.core.domain.api.ITodoCollection")]
+	[Mock(type="todo.example.core.ui.api.IPopup")]
 	[Mock(type="todo.example.todoList.view.api.ITodoListView")]
 	[Mock(type="todo.example.todoList.signal.CompleteTodoSignal")]
 	[Mock(type="robotlegs.bender.extensions.localEventMap.api.IEventMap")]

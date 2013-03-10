@@ -16,8 +16,8 @@ package todo.example.todoList.view
 	import org.osflash.signals.utils.handleSignal;
 	import org.osflash.signals.utils.proceedOnSignal;
 	
-	import todo.example.components.todoList.todoListClasses.TodoListEvent;
-	import todo.example.domain.Todo;
+	import todo.example.core.components.todoList.todoListClasses.TodoListEvent;
+	import todo.example.core.domain.Todo;
 	import todo.example.todoList.view.api.ITodoListView;
 	import todo.example.testing.ViewTests;
 

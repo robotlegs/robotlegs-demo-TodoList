@@ -1,4 +1,4 @@
-package todo.example.ui
+package todo.example.core.ui
 {
 	import org.mockito.integrations.any;
 	import org.mockito.integrations.flexunit4.MockitoRule;
@@ -8,9 +8,9 @@ package todo.example.ui
 	
 	import robotlegs.bender.extensions.viewManager.api.IViewManager;
 	
-	import todo.example.view.api.IView;
+	import todo.example.core.view.IView;
 
-	[Mock(type="todo.example.view.api.IView")]
+	[Mock(type="todo.example.core.view.IView")]
 	[Mock(type="robotlegs.bender.extensions.viewManager.api.IViewManager")]
 	public class PopupTests
 	{

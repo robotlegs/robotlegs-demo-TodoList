@@ -12,20 +12,20 @@ package todo.example.todoForm.mediator
 	import org.osflash.signals.Signal;
 	import org.osflash.signals.utils.proceedOnSignal;
 	
-	import todo.example.domain.Todo;
-	import todo.example.domain.api.ITodoCollection;
+	import todo.example.core.domain.Todo;
+	import todo.example.core.domain.api.ITodoCollection;
 	import todo.example.todoForm.signal.CreateNewTodoSignal;
 	import todo.example.todoForm.signal.UpdateTodoSignal;
-	import todo.example.ui.api.IPopup;
+	import todo.example.core.ui.api.IPopup;
 	import todo.example.todoForm.view.api.ITodoFormView;
 	import todo.example.testing.MediatorTests;
 
-	[Mock(type="todo.example.ui.api.IPopup")]
+	[Mock(type="todo.example.core.ui.api.IPopup")]
 	[Mock(type="todo.example.todoForm.view.api.ITodoFormView")]
 	[Mock(type="todo.example.todoForm.signal.CreateNewTodoSignal")]
 	[Mock(type="todo.example.todoForm.signal.UpdateTodoSignal")]
 	[Mock(type="robotlegs.bender.extensions.localEventMap.api.IEventMap")]
-	[Mock(type="todo.example.domain.api.ITodoCollection")]
+	[Mock(type="todo.example.core.domain.api.ITodoCollection")]
 	public class TodoFormViewMediatorTests extends MediatorTests
 	{
 		private var _todoFormView: ITodoFormView;

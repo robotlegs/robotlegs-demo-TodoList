@@ -2,8 +2,8 @@ package todo.example.todoForm.view.api
 {
 	import org.osflash.signals.ISignal;
 	
-	import todo.example.domain.Todo;
-	import todo.example.view.api.IView;
+	import todo.example.core.domain.Todo;
+	import todo.example.core.view.IView;
 
 	public interface ITodoFormView extends IView
 	{

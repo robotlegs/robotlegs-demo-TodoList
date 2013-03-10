@@ -1,4 +1,4 @@
-package todo.example.ui
+package todo.example.core.ui
 {
 	import flash.display.DisplayObject;
 	import flash.display.DisplayObjectContainer;
@@ -11,8 +11,8 @@ package todo.example.ui
 	
 	import spark.components.Application;
 	
-	import todo.example.ui.api.IPopup;
-	import todo.example.view.api.IView;
+	import todo.example.core.ui.api.IPopup;
+	import todo.example.core.view.IView;
 	
 	/**
 	 * Wrapper class for the PopUpManager that 
