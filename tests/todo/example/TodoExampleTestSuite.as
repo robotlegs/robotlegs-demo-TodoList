@@ -1,22 +1,22 @@
 package todo.example
 {
 	import todo.example.bundle.AppBundleTests;
-	import todo.example.command.CompleteTodoCommandTests;
-	import todo.example.command.CreateNewTodoCommandTests;
-	import todo.example.command.UpdateTodoCommandTests;
+	import todo.example.todoList.command.CompleteTodoCommandTests;
+	import todo.example.todoForm.command.CreateNewTodoCommandTests;
+	import todo.example.todoForm.command.UpdateTodoCommandTests;
 	import todo.example.config.AppConfigurationTests;
 	import todo.example.domain.TodoCollectionTests;
 	import todo.example.domain.TodoTests;
-	import todo.example.mediator.TodoFormViewMediatorTests;
-	import todo.example.mediator.TodoListViewMediatorTests;
-	import todo.example.signal.CompleteTodoSignalTests;
-	import todo.example.signal.CreateNewTodoSignalTests;
-	import todo.example.signal.UpdateTodoSignalTests;
+	import todo.example.todoForm.mediator.TodoFormViewMediatorTests;
+	import todo.example.todoList.mediator.TodoListViewMediatorTests;
+	import todo.example.todoList.signal.CompleteTodoSignalTests;
+	import todo.example.todoForm.signal.CreateNewTodoSignalTests;
+	import todo.example.todoForm.signal.UpdateTodoSignalTests;
 	import todo.example.ui.PopupTests;
 	import todo.example.util.VectorUtilTests;
 	import todo.example.view.MainViewTests;
-	import todo.example.view.TodoFormViewTests;
-	import todo.example.view.TodoListViewTests;
+	import todo.example.todoForm.view.TodoFormViewTests;
+	import todo.example.todoList.view.TodoListViewTests;
 
 	[Suite]
 	[RunWith("org.flexunit.runners.Suite")]
