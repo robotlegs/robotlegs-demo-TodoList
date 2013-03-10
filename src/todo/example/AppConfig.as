@@ -1,4 +1,4 @@
-package todo.example.config
+package todo.example
 {
 	import org.swiftsuspenders.Injector;
 	

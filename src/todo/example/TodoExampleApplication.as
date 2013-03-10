@@ -11,7 +11,6 @@ package todo.example
 	
 	import spark.components.Application;
 	
-	import todo.example.config.AppConfig;
 	import todo.example.todoForm.TodoFormConfig;
 	import todo.example.todoList.TodoListConfig;
 	

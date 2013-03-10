@@ -1,6 +1,5 @@
 package todo.example
 {
-	import todo.example.config.AppConfigurationTests;
 	import todo.example.domain.TodoCollectionTests;
 	import todo.example.domain.TodoTests;
 	import todo.example.todoForm.TodoFormConfigTests;
