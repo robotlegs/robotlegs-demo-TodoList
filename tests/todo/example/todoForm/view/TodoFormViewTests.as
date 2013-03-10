@@ -8,7 +8,7 @@ package todo.example.todoForm.view
 	import org.osflash.signals.utils.proceedOnSignal;
 	
 	import todo.example.todoForm.view.api.ITodoFormView;
-	import todo.example.view.ViewTests;
+	import todo.example.testing.ViewTests;
 
 	public class TodoFormViewTests extends ViewTests
 	{

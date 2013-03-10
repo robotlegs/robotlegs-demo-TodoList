@@ -19,7 +19,7 @@ package todo.example.todoList.view
 	import todo.example.components.todoList.todoListClasses.TodoListEvent;
 	import todo.example.domain.Todo;
 	import todo.example.todoList.view.api.ITodoListView;
-	import todo.example.view.ViewTests;
+	import todo.example.testing.ViewTests;
 
 	public class TodoListViewTests extends ViewTests
 	{

@@ -17,7 +17,6 @@ package todo.example
 	import todo.example.todoList.view.TodoListViewTests;
 	import todo.example.ui.PopupTests;
 	import todo.example.util.VectorUtilTests;
-	import todo.example.view.MainViewTests;
 
 	[Suite]
 	[RunWith("org.flexunit.runners.Suite")]
@@ -39,7 +38,6 @@ package todo.example
 		public var completeTodoSignalTests: CompleteTodoSignalTests;		
 		public var completeTodoCommandTests: CompleteTodoCommandTests;
 		
-		public var mainViewTests: MainViewTests;
 		public var todoTests: TodoTests;
 		public var todoCollectionTests: TodoCollectionTests;
 		public var popupTests: PopupTests;

@@ -1,4 +1,4 @@
-package todo.example.view
+package todo.example.testing
 {
 	import flash.events.Event;
 	import flash.events.MouseEvent;
