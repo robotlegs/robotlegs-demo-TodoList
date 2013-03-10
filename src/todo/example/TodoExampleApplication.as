@@ -11,7 +11,6 @@ package todo.example
 	
 	import spark.components.Application;
 	
-	import todo.example.bundle.AppBundle;
 	import todo.example.config.AppConfig;
 	import todo.example.todoForm.TodoFormConfig;
 	import todo.example.todoList.TodoListConfig;
@@ -41,7 +40,7 @@ package todo.example
 		private function preInitialize(e: FlexEvent): void
 		{
 			context = new Context()
-				.install(AppBundle)
+				.install(MVCSBundle, SignalCommandMapExtension)
 				.configure(AppConfig)
 				.configure(TodoFormConfig)
 				.configure(TodoListConfig)

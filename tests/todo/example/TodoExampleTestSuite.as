@@ -1,6 +1,5 @@
 package todo.example
 {
-	import todo.example.bundle.AppBundleTests;
 	import todo.example.config.AppConfigurationTests;
 	import todo.example.domain.TodoCollectionTests;
 	import todo.example.domain.TodoTests;
@@ -24,7 +23,6 @@ package todo.example
 	[RunWith("org.flexunit.runners.Suite")]
 	public class TodoExampleTestSuite
 	{
-		public var appBundleTests: AppBundleTests;
 		public var appConfigurationTests: AppConfigurationTests;
 		
 		public var todoFormConfigTests: TodoFormConfigTests;
