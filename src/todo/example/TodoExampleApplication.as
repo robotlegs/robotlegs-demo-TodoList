@@ -13,6 +13,8 @@ package todo.example
 	
 	import todo.example.bundle.AppBundle;
 	import todo.example.config.AppConfig;
+	import todo.example.todoForm.TodoFormConfig;
+	import todo.example.todoList.TodoListConfig;
 	
 	public class TodoExampleApplication extends Application
 	{
@@ -41,6 +43,8 @@ package todo.example
 			context = new Context()
 				.install(AppBundle)
 				.configure(AppConfig)
+				.configure(TodoFormConfig)
+				.configure(TodoListConfig)
 				.configure(new ContextView(this));
 			
 			setLogLevel();
