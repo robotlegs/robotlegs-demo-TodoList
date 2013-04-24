@@ -7,13 +7,13 @@ Very simple example of a todo list application developed using Apache Flex 4.8 a
 Below is a list of frameworks & libraries used for the project.
 
 * [Apache Flex 4.9](http://incubator.apache.org/flex/)
-* [Robotlegs 2 Beta 5](https://github.com/robotlegs/robotlegs-framework/) *(built using the latest source code from [27th February 2013](https://github.com/robotlegs/robotlegs-framework/commit/8c223f17ac90ce18f41bb1a340b292750aba111d))*
+* [Robotlegs 2 Beta 5](https://github.com/robotlegs/robotlegs-framework/) *(built using the latest source code from [22th April 2013](https://github.com/robotlegs/robotlegs-framework/commit/47301ac24d31b0cc063fd481ae0a2139abbdc2c6))*
 * [FlexUnit 4.1.0.16076](https://github.com/flexunit/flexunit/)
 * [Mockito 1.4M5](https://bitbucket.org/loomis/mockito-flex/)
 * [Hamcrest 1.1.3](https://github.com/drewbourne/hamcrest-as3)
 * [AS3 Signals 0.9 BETA](https://github.com/robertpenner/as3-signals/) *(built using the Apache Flex 4.8 SDK.)*
 * [AS3 Signals Utilities 0.9 BETA](https://github.com/eidiot/as3-signals-utilities-async) *(built using the Apache Flex 4.8 SDK.)*
-* [SignalCommandMap Robotlegs Extension](https://github.com/pixels4nickels/robotlegs-extensions-SignalCommandMap) *(built using the latest source code from 1st November 2012)*
+* [SignalCommandMap Robotlegs Extension](https://github.com/creynders/robotlegs-extensions-SignalCommandMap) *(built using the latest source code from [WIP branch](https://github.com/creynders/robotlegs-extensions-SignalCommandMap/tree/WIP))*
 
 ## Specification
 
