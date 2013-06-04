@@ -1,10 +1,9 @@
 package todo.example.todoList
 {
-	import org.swiftsuspenders.Injector;
-	
 	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
 	import robotlegs.bender.extensions.signalCommandMap.api.ISignalCommandMap;
 	import robotlegs.bender.framework.api.IConfig;
+	import robotlegs.bender.framework.api.IInjector;
 	
 	import todo.example.todoList.command.CompleteTodoCommand;
 	import todo.example.todoList.mediator.TodoListViewMediator;
@@ -14,7 +13,7 @@ package todo.example.todoList
 	public class TodoListConfig implements IConfig
 	{
 		[Inject]
-		public var injector: Injector;
+		public var injector: IInjector;
 		
 		[Inject]
 		public var mediatorMap: IMediatorMap;

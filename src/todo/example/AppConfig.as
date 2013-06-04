@@ -1,8 +1,7 @@
 package todo.example
 {
-	import org.swiftsuspenders.Injector;
-	
 	import robotlegs.bender.framework.api.IConfig;
+	import robotlegs.bender.framework.api.IInjector;
 	
 	import todo.example.core.domain.TodoCollection;
 	import todo.example.core.domain.api.ITodoCollection;
@@ -12,7 +11,7 @@ package todo.example
 	public class AppConfig implements IConfig
 	{
 		[Inject]
-		public var injector: Injector;
+		public var injector: IInjector;
 			
 		public function configure(): void
 		{

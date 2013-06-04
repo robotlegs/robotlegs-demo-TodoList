@@ -1,10 +1,9 @@
 package todo.example.todoForm
 {
-	import org.swiftsuspenders.Injector;
-	
 	import robotlegs.bender.extensions.mediatorMap.api.IMediatorMap;
 	import robotlegs.bender.extensions.signalCommandMap.api.ISignalCommandMap;
 	import robotlegs.bender.framework.api.IConfig;
+	import robotlegs.bender.framework.api.IInjector;
 	
 	import todo.example.todoForm.command.CreateNewTodoCommand;
 	import todo.example.todoForm.command.UpdateTodoCommand;
@@ -16,7 +15,7 @@ package todo.example.todoForm
 	public class TodoFormConfig implements IConfig
 	{
 		[Inject]
-		public var injector: Injector;
+		public var injector: IInjector;
 		
 		[Inject]
 		public var mediatorMap: IMediatorMap;
