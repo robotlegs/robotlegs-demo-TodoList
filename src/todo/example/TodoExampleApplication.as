@@ -22,21 +22,13 @@ package todo.example
 		{
 			super();
 			
-			addListeners();
+			setupContext();
 		}
 		
 		/**
-		 * Adds event listeners for the application.
+		 * Sets up the Robotlegs context.
 		 */
-		private function addListeners(): void
-		{
-			addEventListener(FlexEvent.PREINITIALIZE, preInitialize);
-		}
-		
-		/**
-		 * Handles the application preinitialization.
-		 */
-		private function preInitialize(e: FlexEvent): void
+		private function setupContext(): void
 		{
 			context = new Context()
 				.install(MVCSBundle, SignalCommandMapExtension)
