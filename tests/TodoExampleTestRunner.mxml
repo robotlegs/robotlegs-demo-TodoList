@@ -14,7 +14,7 @@
 			import org.flexunit.listeners.UIListener;
 			import org.flexunit.runner.FlexUnitCore;
 			
-			import todo.example.TodoExampleTestSuite;
+			import example.todo.TodoExampleTestSuite;
 			
 			private function runTests(): void
 			{

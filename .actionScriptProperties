@@ -17,8 +17,8 @@
     <sourceAttachmentPath/>
   </compiler>
   <applications>
+    <application path="example/todo/TodoExampleApplication.as"/>
     <application path="TodoExample.mxml"/>
-    <application path="todo/example/TodoExampleApplication.as"/>
   </applications>
   <modules>
     <module application="src/TodoExample.mxml" destPath="TodoExampleTestRunner.swf" optimize="false" sourcePath="tests/TodoExampleTestRunner.mxml"/>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<example:TodoExampleApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+<todo:TodoExampleApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
 							    xmlns:s="library://ns.adobe.com/flex/spark"
-								xmlns:example="todo.example.*"
-								xmlns:view="todo.example.todoList.view.*"
+								xmlns:todo="example.todo.*"
+								xmlns:view="example.todo.todoList.view.*"
 							    height="100%" width="100%">
 	
 	<s:Group>
@@ -16,5 +16,5 @@
 	
 		<view:TodoListView id="todoListView" />
 	</s:Group>
-</example:TodoExampleApplication>
+</todo:TodoExampleApplication>
 
