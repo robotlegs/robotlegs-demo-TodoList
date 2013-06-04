@@ -37,7 +37,11 @@ package todo.example
 				.configure(TodoListConfig)
 				.configure(new ContextView(this));
 			
-			setLogLevel();
+			// If you wish to change the log level then uncomment the line below and set 
+			// the logLevel to the value you desire. The default logLevel is DEBUG, which 
+			// is set in the MVCSBundle. The default log level traces out the framework 
+			// actions, which can assist in learning Robotlegs.
+			//setLogLevel();
 		}
 		
 		/**
