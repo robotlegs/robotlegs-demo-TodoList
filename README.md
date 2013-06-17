@@ -7,13 +7,13 @@ Very simple example of a todo list application developed using Apache Flex 4.8 a
 Below is a list of frameworks & libraries used for the project.
 
 * [Apache Flex 4.9](http://incubator.apache.org/flex/)
-* [Robotlegs 2 Beta 7](https://github.com/robotlegs/robotlegs-framework/) *(built using the latest source code from [4th JUne 2013](https://github.com/robotlegs/robotlegs-framework/commit/b82a1b091b3277d487b718c9016884e3c92ab81e))*
+* [Robotlegs 2](https://github.com/robotlegs/robotlegs-framework/)
 * [FlexUnit 4.1.0.16076](https://github.com/flexunit/flexunit/)
 * [Mockito 1.4M5](https://bitbucket.org/loomis/mockito-flex/)
 * [Hamcrest 1.1.3](https://github.com/drewbourne/hamcrest-as3)
 * [AS3 Signals 0.9 BETA](https://github.com/robertpenner/as3-signals/) *(built using the Apache Flex 4.8 SDK.)*
 * [AS3 Signals Utilities 0.9 BETA](https://github.com/eidiot/as3-signals-utilities-async) *(built using the Apache Flex 4.8 SDK.)*
-* [SignalCommandMap Robotlegs Extension](https://github.com/pixels4nickels/robotlegs-extensions-SignalCommandMap) *(built using the latest source code from 5th May 2013)*
+* [SignalCommandMap Robotlegs Extension](https://github.com/robotlegs/robotlegs-extensions-SignalCommandMap) *(built using the latest source code from 5th May 2013)*
 
 ## Specification
 
